@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Mis XV Años · Keidy Julieth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/invitacion.css" />
+</head>
+<body class="bloqueado">
+
+<!-- Música (YouTube oculto). El enlace se cambia en assets/invitacion.js -->
+<div id="musica"><iframe id="yt" title="Música" allow="autoplay; encrypted-media" tabindex="-1"></iframe></div>
+<button id="musicBtn" aria-label="Música"><span>♪</span></button>
+<div id="petalos" aria-hidden="true"></div>
+
+<!-- PORTADA: el libro se abre al tocarlo -->
+<div id="portada">
+  <button id="abrir" aria-label="Abrir invitación">
+    <img src="assets/img/libro.png" alt="Libro Mis 15 años" />
+    <span>Toca para abrir mi invitación</span>
+  </button>
+</div>
+
+<main>
+  <!-- 1. Hero -->
+  <section class="sec hero">
+    <img class="flores" src="assets/img/flores1.png" alt="" />
+    <img class="bfly b1" src="assets/img/mar1.png" alt="" />
+    <img class="bfly b2" src="assets/img/mar1.png" alt="" />
+    <img class="bfly b3" src="assets/img/mar1.png" alt="" />
+    <div class="aro"><img src="assets/img/aro.png" alt="" /><h1>Mis 15<br />Años</h1></div>
+    <p class="nombre">Keidy Julieth</p>
+    <p class="apellido">Avila Rodriguez</p>
+    <img class="princesa" src="assets/img/princesa1.png" alt="" />
+  </section>
+
+  <!-- 2. Mensaje -->
+  <section class="sec">
+    <div class="marco rev">
+      <img class="corona" src="assets/img/corona.png" alt="" />
+      <p class="texto">Con la bendición de Dios y el amor que mi familia me ha brindado, me siento feliz de haber llegado a este momento de mi vida, el día que dejaré atrás mi infancia y comenzaré una nueva etapa.</p>
+    </div>
+  </section>
+
+  <!-- 3. Foto -->
+  <section class="band"><figure class="foto rev"><img src="assets/fotos/foto1.jpg" alt="Keidy Julieth" loading="lazy" /></figure></section>
+
+  <!-- 4. Padres -->
+  <section class="sec">
+    <img class="corona rev" src="assets/img/corona1.png" alt="" />
+    <h2 class="rev">Mis padres</h2>
+    <p class="nombres rev">Aristóbulo Ávila<br /><span>&amp;</span><br />Mireya Rodríguez</p>
+    <h2 class="rev">Mi hermano</h2>
+    <p class="nombres rev">Daimerson Ávila</p>
+  </section>
+
+  <!-- 5. Fecha, cuenta regresiva, calendario -->
+  <section class="sec fecha">
+    <h2 class="rev invita">Nos complace invitarte<br />a los 15 años de nuestra princesa</h2>
+    <div class="dia rev">
+      <div><b>Domingo</b><i>2:00 pm</i></div>
+      <strong>29</strong>
+      <div><b>Noviembre</b><i>2026</i></div>
+    </div>
+    <div class="cuenta rev">
+      <p>Faltan</p>
+      <div class="cuenta-fila">
+        <div><span id="cd-dias">--</span><small>Días</small></div><em>:</em>
+        <div><span id="cd-horas">--</span><small>Horas</small></div><em>:</em>
+        <div><span id="cd-min">--</span><small>Min</small></div><em>:</em>
+        <div><span id="cd-seg">--</span><small>Seg</small></div>
+      </div>
+    </div>
+    <div class="calendario rev" id="calendario" aria-label="Calendario de noviembre 2026"></div>
+  </section>
+
+  <!-- 6. Foto -->
+  <section class="band"><figure class="foto rev"><img src="assets/fotos/foto2.jpg" alt="Keidy Julieth" loading="lazy" /></figure></section>
+
+  <!-- 7. Lugares -->
+  <section class="sec">
+    <div class="marco rev">
+      <h2>Ceremonia religiosa</h2>
+      <p class="lugar">Capilla Vereda Chen</p>
+      <span class="filete"></span>
+      <h2>Recepción y celebración</h2>
+      <p class="lugar">Residencia Familia Avila Rodríguez</p>
+      <span class="filete"></span>
+      <h2>Código de vestimenta</h2>
+      <p class="lugar">No aplica</p>
+      <a class="boton" id="mapa" target="_blank" rel="noopener">Ver ubicación</a>
+    </div>
+  </section>
+
+  <!-- 8. Galería -->
+  <section class="sec galeria">
+    <h2 class="titulo rev">Galería de fotos</h2>
+    <div class="rejilla">
+      <figure class="rev"><img src="assets/fotos/foto3.jpg" alt="Foto 3" loading="lazy" /></figure>
+      <figure class="rev"><img src="assets/fotos/foto4.jpg" alt="Foto 4" loading="lazy" /></figure>
+      <figure class="rev"><img src="assets/fotos/foto5.jpg" alt="Foto 5" loading="lazy" /></figure>
+      <figure class="rev"><img src="assets/fotos/foto6.jpg" alt="Foto 6" loading="lazy" /></figure>
+    </div>
+  </section>
+
+  <!-- 9. Confirmación y cierre -->
+  <section class="sec cierre">
+    <img class="corona rev" src="assets/img/corona.png" alt="" />
+    <p class="mensaje rev" id="mensaje">Tu presencia hará que este día sea inolvidable</p>
+    <a class="boton rev" id="confirmar" target="_blank" rel="noopener">Confirmar asistencia</a>
+    <h2 class="titulo final rev">¡Te esperamos!</h2>
+    <img class="rosa rev" src="assets/img/rosa1.png" alt="" />
+  </section>
+</main>
+
+<div id="visor" hidden><img alt="" /></div>
+<script src="assets/invitacion.js"></script>
+</body>
+</html>

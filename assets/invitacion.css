@@ -1,0 +1,105 @@
+:root{--vino:#1a0303;--rojo:#4a0000;--rojo2:#7a0e0e;--oro:#d4af37;--oro2:#f9e596;--crema:#fff0f5}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Playfair Display",serif;background:#1a0000;color:var(--crema);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+body.bloqueado{overflow:hidden;height:100dvh}
+img{display:block;max-width:100%}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at top,#7a0e0e 0%,#4a0000 50%,#1a0000 100%)}
+main{max-width:520px;margin:0 auto;position:relative}
+
+/* Secciones */
+.sec{position:relative;min-height:auto;padding:56px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;overflow:hidden}
+.band{padding:14px 22px}
+h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);letter-spacing:.14em;color:var(--oro2)}
+.corona{width:min(60%,230px);filter:drop-shadow(0 0 14px var(--oro))}
+.flores{position:absolute;top:0;left:0;width:100%;pointer-events:none}
+
+/* Hero */
+.hero{min-height:100svh;justify-content:flex-start;padding:min(40vw,190px) 0 0;gap:0}
+.aro{position:relative;width:min(68%,290px)}
+.aro img{width:100%;filter:drop-shadow(0 0 14px rgba(212,175,55,.6))}
+.aro h1{position:absolute;left:0;right:0;top:56%;translate:0 -50%;font-family:"Great Vibes",cursive;font-weight:400;font-size:clamp(2.6rem,13vw,4.2rem);line-height:.95;color:var(--oro);text-shadow:0 0 14px rgba(212,175,55,.8);animation:aparece 1.8s cubic-bezier(.2,.8,.2,1) both}
+.nombre{font-family:"Great Vibes",cursive;font-size:clamp(2.6rem,13vw,4rem);color:var(--oro2);text-shadow:0 0 16px rgba(0,0,0,.7);margin-top:6px;animation:aparece 1.8s .8s cubic-bezier(.2,.8,.2,1) both}
+.apellido{font-family:Cinzel,serif;letter-spacing:.3em;font-size:.85rem;color:var(--oro)}
+.princesa{width:min(100%,430px);margin-top:auto;filter:drop-shadow(0 0 24px rgba(0,0,0,.6));-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
+@keyframes aparece{from{opacity:0;transform:scale(.7) translateY(30px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.bfly{position:absolute;width:44px;z-index:3;pointer-events:none;filter:drop-shadow(0 0 8px rgba(255,255,255,.35))}
+.b1{left:12%;top:46%;animation:vuelo1 9s ease-in-out infinite}
+.b2{right:10%;top:62%;animation:vuelo2 11s ease-in-out infinite}
+.b3{left:40%;top:78%;animation:vuelo3 13s ease-in-out infinite}
+@keyframes vuelo1{50%{transform:translate(70px,-90px) rotate(25deg)}}
+@keyframes vuelo2{50%{transform:translate(-90px,-60px) rotate(-30deg)}}
+@keyframes vuelo3{50%{transform:translate(60px,-120px) rotate(18deg)}}
+
+/* Marcos de texto */
+.marco{position:relative;width:100%;padding:38px 24px;border:1px solid var(--oro);outline:1px solid rgba(212,175,55,.45);outline-offset:6px;background:rgba(0,0,0,.28);display:flex;flex-direction:column;align-items:center;gap:14px}
+.texto{font-style:italic;font-size:clamp(1.05rem,4.7vw,1.3rem);line-height:1.85;color:var(--crema)}
+.lugar{font-size:1.2rem;color:var(--crema)}
+.filete{width:60px;height:1px;background:var(--oro);margin:6px 0}
+.nombres{font-family:"Great Vibes",cursive;font-size:clamp(2.2rem,10vw,3.1rem);line-height:1.35;color:var(--oro);text-shadow:0 0 12px rgba(0,0,0,.5)}
+.nombres span{font-family:Cinzel,serif;font-size:1.1rem;color:var(--oro2)}
+.titulo{font-family:"Great Vibes",cursive;font-size:clamp(2.6rem,12vw,3.8rem);letter-spacing:0;color:var(--oro);text-shadow:0 0 14px rgba(212,175,55,.6)}
+.boton{display:inline-block;margin-top:10px;padding:15px 34px;border-radius:50px;border:2px solid var(--oro2);background:linear-gradient(135deg,var(--oro2),var(--oro));color:var(--rojo);font:700 .95rem Cinzel,serif;letter-spacing:.1em;text-decoration:none;box-shadow:0 6px 22px rgba(212,175,55,.4);transition:transform .25s}
+.boton:hover,.boton:focus-visible{transform:scale(1.05)}
+
+/* Fotos */
+.foto{width:100%;padding:8px;background:linear-gradient(135deg,var(--oro2),var(--oro),#8a6a12);box-shadow:0 14px 40px rgba(0,0,0,.6)}
+.foto img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.rejilla{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+.rejilla figure{padding:5px;background:var(--oro);cursor:zoom-in}
+.rejilla img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.galeria{gap:26px}
+#visor{position:fixed;inset:0;z-index:9990;background:rgba(10,0,0,.92);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+#visor[hidden]{display:none}
+#visor img{max-height:92dvh;border:3px solid var(--oro)}
+
+/* Fecha */
+.invita{line-height:1.8}
+.dia{display:flex;align-items:center;justify-content:center;gap:18px}
+.dia div{display:flex;flex-direction:column;gap:4px}
+.dia b{font:400 1.05rem Cinzel,serif;letter-spacing:.1em;color:var(--crema)}
+.dia i{font-size:.95rem;color:var(--oro2)}
+.dia strong{font:400 clamp(4rem,22vw,6rem)/1 Cinzel,serif;color:var(--oro);text-shadow:0 0 20px rgba(212,175,55,.8);padding:0 18px;border-inline:1px solid var(--oro)}
+.cuenta{padding:18px 22px;border:1px solid var(--oro);border-radius:14px;background:rgba(0,0,0,.3)}
+.cuenta p{font:.8rem Cinzel,serif;letter-spacing:.35em;color:var(--oro2);margin-bottom:8px}
+.cuenta-fila{display:flex;align-items:flex-start;gap:8px}
+.cuenta-fila div{display:flex;flex-direction:column;min-width:54px}
+.cuenta-fila span{font:700 2rem Cinzel,serif;color:var(--oro2)}
+.cuenta-fila small{font-size:.65rem;color:var(--crema);opacity:.8}
+.cuenta-fila em{font-style:normal;font-size:1.7rem;color:var(--oro)}
+.calendario{width:min(100%,340px);padding:20px 14px;border:1px solid rgba(212,175,55,.5);border-radius:6px;background:rgba(0,0,0,.25)}
+.calendario h3{font:400 1.7rem "Great Vibes",cursive;color:var(--oro);margin-bottom:10px;letter-spacing:.02em}
+.cal-rejilla{display:grid;grid-template-columns:repeat(7,1fr);gap:6px 0;font-size:1rem}
+.cal-rejilla b{font:700 .8rem Cinzel,serif;color:var(--oro2)}
+.cal-rejilla .hoy{display:grid;place-items:center;width:34px;height:34px;margin:0 auto;border-radius:50%;background:var(--oro);color:var(--rojo);font-weight:700;box-shadow:0 0 14px var(--oro)}
+
+/* Cierre */
+.cierre{gap:22px}
+.mensaje{font-style:italic;font-size:clamp(1.2rem,5.4vw,1.5rem);line-height:1.7;min-height:5.2em;display:flex;align-items:center;max-width:90%;transition:opacity .5s,transform .5s}
+.final{margin-top:12px}
+.rosa{width:min(46%,190px);filter:drop-shadow(0 0 18px rgba(0,0,0,.6))}
+
+/* Portada */
+#portada{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:radial-gradient(circle at center,#3a0a0a,var(--vino));transition:opacity 1.2s,visibility 1.2s}
+#portada.abierta{opacity:0;visibility:hidden;pointer-events:none}
+#abrir{background:none;border:0;color:var(--oro2);display:flex;flex-direction:column;align-items:center;gap:24px;cursor:pointer;font:italic 1.05rem "Playfair Display",serif}
+#abrir img{width:min(70vw,300px);filter:drop-shadow(0 20px 30px rgba(0,0,0,.8));animation:flota 4s ease-in-out infinite;transition:transform 1.2s}
+#abrir span{padding:8px 20px;border:1px solid var(--oro);border-radius:30px;background:rgba(0,0,0,.5);animation:pulso 2s infinite}
+#portada.abierta #abrir img{transform:scale(1.5)}
+@keyframes flota{50%{transform:translateY(-10px)}}
+@keyframes pulso{50%{opacity:.55}}
+
+/* Botón de música y pétalos */
+#musicBtn{position:fixed;top:max(16px,env(safe-area-inset-top));right:16px;z-index:9000;width:52px;height:52px;border-radius:50%;border:2px solid var(--oro);background:linear-gradient(135deg,#b30000,var(--rojo));color:var(--oro2);font-size:1.5rem;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.6),0 0 15px rgba(212,175,55,.5)}
+#musicBtn.playing span{display:inline-block;animation:gira 3s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+#musica{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
+#petalos{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
+.petalo{position:absolute;top:-8vh;opacity:.9;animation:cae linear infinite;filter:drop-shadow(0 0 4px rgba(179,0,0,.5))}
+@keyframes cae{to{transform:translate(var(--dx),112vh) rotate(var(--rot))}}
+
+/* Aparición al hacer scroll (la activa el JS) */
+.js .rev{opacity:0;transform:translateY(36px);transition:opacity 1s ease,transform 1s ease}
+.js .rev.in{opacity:1;transform:none}
+:focus-visible{outline:3px solid var(--oro2);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.petalo{display:none}.js .rev{opacity:1;transform:none}}

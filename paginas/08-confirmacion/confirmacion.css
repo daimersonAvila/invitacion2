@@ -1,0 +1,462 @@
+/* ================================================================
+   CONFIRMACION.CSS - Sección "Un Mensaje para Ti"
+   Solo mensajes bonitos rotando, sin formulario
+   ================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    background: #1a0303;
+}
+
+#pageFlip {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+/* ================================================================
+   SECCIÓN PRINCIPAL
+   ================================================================ */
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 4vh 25px 90px;
+    text-align: center;
+}
+
+/* ================================================================
+   FONDO ROJO OSCURO ELEGANTE
+   ================================================================ */
+.bg-dark-red {
+    background:
+            radial-gradient(
+                    ellipse at 50% 20%,
+                    rgba(140, 20, 20, 0.6) 0%,
+                    transparent 50%
+            ),
+            radial-gradient(
+                    ellipse at 50% 80%,
+                    rgba(80, 0, 0, 0.5) 0%,
+                    transparent 60%
+            ),
+            linear-gradient(
+                    170deg,
+                    #4a0505 0%,
+                    #3a0202 30%,
+                    #2a0101 60%,
+                    #1a0000 100%
+            );
+}
+
+.bg-dark-red::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+            radial-gradient(circle at 15% 25%, rgba(255, 200, 100, 0.15) 0%, transparent 2%),
+            radial-gradient(circle at 85% 15%, rgba(255, 200, 100, 0.12) 0%, transparent 1.5%),
+            radial-gradient(circle at 25% 70%, rgba(255, 200, 100, 0.1) 0%, transparent 1.8%),
+            radial-gradient(circle at 75% 85%, rgba(255, 200, 100, 0.13) 0%, transparent 1.5%),
+            radial-gradient(circle at 50% 50%, rgba(255, 200, 100, 0.08) 0%, transparent 3%);
+    pointer-events: none;
+    z-index: 0;
+    animation: parpadeo 4s ease-in-out infinite;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ================================================================
+   FLORES SUPERIORES
+   ================================================================ */
+.flowers-top {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 60vw;
+    max-width: 280px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.85;
+    filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.5));
+    animation: floresEntrar 1.2s cubic-bezier(0.25, 0.9, 0.3, 1.05) both;
+}
+
+@keyframes floresEntrar {
+    0% {
+        transform: translate(-40%, -40%) rotate(-10deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.85;
+    }
+}
+
+/* ================================================================
+   CORONA
+   ================================================================ */
+.crown-display {
+    position: relative;
+    margin-bottom: 1vh;
+    width: 35vw;
+    max-width: 140px;
+    z-index: 5;
+    animation: coronaEntrar 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.1) 0.3s both;
+}
+
+@keyframes coronaEntrar {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-30px);
+        filter: blur(10px) brightness(1.8);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.08) translateY(5px);
+        filter: blur(0) brightness(1.3);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+.crown-display img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter:
+            drop-shadow(0 0 20px rgba(212, 175, 55, 0.85))
+            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+/* ================================================================
+   SUBTÍTULO "Un Mensaje para Ti"
+   ================================================================ */
+.section-subtitle {
+    position: relative;
+    z-index: 5;
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #d4af37;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1vh;
+
+    -webkit-text-stroke: 0.4px #8b6914;
+    text-stroke: 0.4px #8b6914;
+
+    text-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.9),
+            0 0 15px rgba(255, 215, 0, 0.9),
+            0 0 30px rgba(255, 215, 0, 0.5);
+
+    animation: subtitleEntrar 1.2s ease-out 0.6s both;
+}
+
+@keyframes subtitleEntrar {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* ================================================================
+   DIVISOR
+   ================================================================ */
+.divider {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 2vh 0;
+    width: 60%;
+    max-width: 220px;
+    animation: subtitleEntrar 1.2s ease-out 0.8s both;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+            to right,
+            transparent,
+            rgba(212, 175, 55, 0.7),
+            transparent
+    );
+}
+
+.divider-icon {
+    font-size: 0.9rem;
+    color: #d4af37;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    animation: girarIcono 6s linear infinite;
+}
+
+@keyframes girarIcono {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+
+/* ================================================================
+   ✅ CONTENEDOR DE MENSAJES
+   ================================================================ */
+.mensajes-container {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30vh;
+    max-width: 90%;
+    padding: 0 15px;
+    margin: 2vh 0;
+}
+
+.mensaje-dinamico {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+    line-height: 1.5;
+    color: #f9e596;
+    text-align: center;
+
+    text-shadow:
+            0 3px 6px rgba(0, 0, 0, 0.9),
+            0 0 20px rgba(255, 215, 0, 1),
+            0 0 40px rgba(255, 215, 0, 0.6),
+            0 0 60px rgba(255, 215, 0, 0.3);
+
+    animation: brilloMensaje 3s ease-in-out infinite;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+@keyframes brilloMensaje {
+    0%, 100% {
+        text-shadow:
+                0 3px 6px rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(255, 215, 0, 1),
+                0 0 40px rgba(255, 215, 0, 0.6),
+                0 0 60px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        text-shadow:
+                0 3px 6px rgba(0, 0, 0, 0.9),
+                0 0 30px rgba(255, 215, 0, 1),
+                0 0 60px rgba(255, 215, 0, 0.8),
+                0 0 90px rgba(255, 215, 0, 0.5);
+    }
+}
+
+/* ================================================================
+   ICONO DECORATIVO (corazón)
+   ================================================================ */
+.icono-decorativo {
+    position: relative;
+    z-index: 5;
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    color: #d4af37;
+    margin-top: 3vh;
+    animation: latido 1.6s ease-in-out infinite;
+    text-shadow:
+            0 0 15px rgba(255, 215, 0, 0.9),
+            0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+    }
+    10% {
+        transform: scale(1.25);
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    }
+    20% {
+        transform: scale(1.05);
+    }
+    30% {
+        transform: scale(1.22);
+        filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.95));
+    }
+    45% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+    }
+}
+/* ================================================================
+   MARIPOSAS DECORATIVAS - ✅ Se mueven SOLO por los bordes
+   ================================================================ */
+.bfly {
+    position: absolute;
+    pointer-events: none;
+    z-index: 6;
+    width: 55px;
+    height: auto;
+    opacity: 0.9;
+    filter:
+            drop-shadow(0 0 12px rgba(212, 175, 55, 0.85))
+            drop-shadow(0 0 25px rgba(255, 215, 0, 0.5));
+    will-change: transform;
+}
+
+/* ✅ Mariposa 1: se mueve SOLO por la esquina superior derecha */
+.bfly-1 {
+    top: 8%;
+    right: 3%;
+    animation: vuelo-esquina-sup-der 9s ease-in-out infinite;
+}
+
+/* ✅ Mariposa 2: se mueve SOLO por la esquina inferior izquierda */
+.bfly-2 {
+    bottom: 18%;
+    left: 3%;
+    animation: vuelo-esquina-inf-izq 10s ease-in-out infinite;
+}
+
+/* ✅ Mariposa 3: se mueve SOLO por la esquina superior izquierda (debajo de flores) */
+.bfly-3 {
+    top: 30%;
+    left: 4%;
+    width: 42px;
+    animation: vuelo-esquina-sup-izq 11s ease-in-out infinite;
+}
+
+/* ================================================================
+   RUTAS DE VUELO - Solo en las esquinas, lejos del centro
+   ================================================================ */
+
+/* Esquina superior derecha: se queda en su cuadrante */
+@keyframes vuelo-esquina-sup-der {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-8vw, 5vh) rotate(45deg);
+    }
+    50% {
+        transform: translate(2vw, 10vh) rotate(-30deg);
+    }
+    75% {
+        transform: translate(-5vw, 3vh) rotate(60deg);
+    }
+}
+
+/* Esquina inferior izquierda: se queda en su cuadrante */
+@keyframes vuelo-esquina-inf-izq {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(8vw, -6vh) rotate(180deg);
+    }
+    50% {
+        transform: translate(2vw, -12vh) rotate(90deg);
+    }
+    75% {
+        transform: translate(10vw, -4vh) rotate(240deg);
+    }
+}
+
+/* Esquina superior izquierda: se queda en su cuadrante */
+@keyframes vuelo-esquina-sup-izq {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(10vw, 6vh) rotate(-45deg);
+    }
+    50% {
+        transform: translate(3vw, 14vh) rotate(120deg);
+    }
+    75% {
+        transform: translate(12vw, 4vh) rotate(-90deg);
+    }
+}
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-height: 700px) {
+    .section {
+        padding: 2vh 20px 80px;
+    }
+    .crown-display {
+        width: 28vw;
+        max-width: 110px;
+        margin-bottom: 0.5vh;
+    }
+    .section-subtitle {
+        font-size: clamp(1.1rem, 5.2vw, 1.5rem);
+    }
+    .divider {
+        margin: 1.5vh 0;
+    }
+    .mensajes-container {
+        min-height: 25vh;
+        margin: 1.5vh 0;
+    }
+    .mensaje-dinamico {
+        font-size: clamp(1.5rem, 6.5vw, 2.2rem);
+    }
+    .icono-decorativo {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+        margin-top: 2vh;
+    }
+    .bfly {
+        width: 45px !important;
+    }
+    .bfly-3 {
+        width: 35px !important;
+    }
+}
+
+@media (min-height: 900px) {
+    .crown-display {
+        width: 38vw;
+        max-width: 170px;
+    }
+    .section-subtitle {
+        font-size: clamp(1.6rem, 6.5vw, 2.1rem);
+    }
+    .mensajes-container {
+        min-height: 35vh;
+    }
+    .mensaje-dinamico {
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
+    }
+    .bfly {
+        width: 75px !important;
+    }
+}

@@ -1,0 +1,258 @@
+/* =========================================================
+   SHELL.CSS
+   ========================================================= */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a0303;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   CONTENEDOR DE LAS PÁGINAS HIJAS
+   ========================================================= */
+#pageFlip {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#contentFrame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* =========================================================
+   ✅ IFRAME DE YOUTUBE OCULTO
+   ========================================================= */
+#youtube-audio-container {
+  position: fixed !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -9999 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  visibility: hidden !important;
+  border: 0 !important;
+}
+
+#youtube-audio,
+#youtube-audio-container iframe {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   ✅ CONTADOR CENTRADO ABAJO (diseño completo)
+   ========================================================= */
+#countdown-widget {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483646;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 22px;
+
+  background: linear-gradient(
+          135deg,
+          rgba(74, 0, 0, 0.92),
+          rgba(26, 0, 0, 0.98)
+  );
+  border: 1.5px solid rgba(212, 175, 55, 0.75);
+  border-radius: 20px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+          0 5px 20px rgba(0, 0, 0, 0.6),
+          0 0 20px rgba(212, 175, 55, 0.35),
+          inset 0 0 20px rgba(212, 175, 55, 0.08);
+
+  pointer-events: none;
+  user-select: none;
+
+  animation: entradaContador 1s ease-out 1s both;
+}
+
+@keyframes entradaContador {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.cd-title {
+  font-family: "Cinzel", serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #d4af37;
+  letter-spacing: 4px;
+  text-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.9),
+          0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.cd-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+}
+
+.cd-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 42px;
+}
+
+.cd-value {
+  font-family: "Cinzel", serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #d4af37;
+  line-height: 1;
+  -webkit-text-stroke: 0.4px #8b6914;
+  text-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.9),
+          0 0 10px rgba(255, 215, 0, 1),
+          0 0 20px rgba(255, 215, 0, 0.6);
+  font-variant-numeric: tabular-nums;
+  animation: pulsoContador 2s ease-in-out infinite;
+}
+
+@keyframes pulsoContador {
+  0%, 100% {
+    text-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.9),
+            0 0 10px rgba(255, 215, 0, 0.9),
+            0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    text-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.9),
+            0 0 18px rgba(255, 215, 0, 1),
+            0 0 35px rgba(255, 215, 0, 0.7);
+  }
+}
+
+.cd-unit {
+  font-family: "Cinzel", serif;
+  font-size: 0.55rem;
+  color: #d4af37;
+  letter-spacing: 1px;
+  margin-top: 3px;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.cd-sep {
+  font-family: "Cinzel", serif;
+  font-size: 1.1rem;
+  color: #d4af37;
+  font-weight: 700;
+  opacity: 0.7;
+  margin-top: 2px;
+  animation: pulsoSeparador 1s ease-in-out infinite;
+}
+
+@keyframes pulsoSeparador {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* =========================================================
+   ANIMACIÓN DEL ICONO DE MÚSICA
+   ========================================================= */
+.music-btn.playing #musicIcon {
+  animation: spin 3s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 400px) {
+  #countdown-widget {
+    padding: 8px 16px;
+    gap: 5px;
+  }
+  .cd-item {
+    min-width: 36px;
+  }
+  .cd-value {
+    font-size: 1.15rem;
+  }
+  .cd-title {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+  }
+  .cd-unit {
+    font-size: 0.5rem;
+  }
+  .cd-sep {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-height: 700px) {
+  #countdown-widget {
+    bottom: 10px;
+    padding: 8px 18px;
+  }
+  .cd-value {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-height: 900px) {
+  #countdown-widget {
+    bottom: 20px;
+    padding: 12px 28px;
+  }
+  .cd-value {
+    font-size: 1.55rem;
+  }
+  .cd-item {
+    min-width: 48px;
+  }
+}

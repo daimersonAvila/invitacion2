@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Detalles del Evento - Mis XV Años</title>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../../assets/base.css" />
+  <link rel="stylesheet" href="../../assets/nav.css" />
+  <link rel="stylesheet" href="detalles.css" />
+</head>
+<body>
+<div id="pageFlip">
+  <section class="section bg-dark-red details-section">
+
+    <!-- Flores superiores (esquina izquierda) -->
+    <img src="../../assets/img/flores1.png" alt="Flores" class="flowers-top" />
+
+    <!-- Corona arriba al centro -->
+    <div class="crown-display">
+      <img src="../../assets/img/corona.png" alt="Corona" />
+    </div>
+
+    <!-- Mariposas volando (grandes) -->
+    <img src="../../assets/img/mar1.png" class="bfly bfly-1" alt="Mariposa" />
+    <img src="../../assets/img/mar1.png" class="bfly bfly-2" alt="Mariposa" />
+    <img src="../../assets/img/mar1.png" class="bfly bfly-3" alt="Mariposa" />
+
+    <!-- Título -->
+    <h3 class="details-title">
+      NOS COMPLACE INVITARTE<br />A LOS 15 AÑOS DE NUESTRA<br />PRINCESA
+    </h3>
+
+    <!-- Fecha con el número grande -->
+    <div class="event-date-block">
+      <div class="date-column">
+        <span class="date-day">Domingo</span>
+        <span class="date-time">2:00 pm</span>
+      </div>
+      <div class="date-number">29</div>
+      <div class="date-column">
+        <span class="date-month">Noviembre</span>
+        <span class="date-year">2026</span>
+      </div>
+    </div>
+
+    <!-- ✅ CONTADOR CENTRAL (sin overlay) -->
+    <div class="countdown-container">
+      <p class="countdown-label">FALTAN</p>
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <span class="countdown-value" id="cd-dias">--</span>
+          <span class="countdown-unit">Días</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="cd-horas">--</span>
+          <span class="countdown-unit">Horas</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="cd-min">--</span>
+          <span class="countdown-unit">Min</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="cd-seg">--</span>
+          <span class="countdown-unit">Seg</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lugar -->
+    <div class="event-place-block">
+      <p class="place-name">Capilla Vereda Chen</p>
+      <p class="place-sub">CEREMONIA RELIGIOSA</p>
+      <p class="place-name">Residencia Familia Avila Rodríguez</p>
+      <p class="place-sub">RECEPCIÓN Y CELEBRACIÓN</p>
+    </div>
+
+    <!-- Código de vestimenta -->
+    <div class="dress-code-block">
+      <p class="dress-label">CÓDIGO DE VESTIMENTA</p>
+      <p class="dress-value">No aplica</p>
+    </div>
+
+    <!-- Botón del mapa -->
+    <a
+            href="https://www.google.com/maps/search/Capilla+Vereda+Chen"
+            target="_blank"
+            class="btn-mapa"
+    >📍 Ver ubicación en el mapa</a>
+
+  </section>
+</div>
+
+<script src="../../assets/animations.js"></script>
+<script src="../../assets/nav.js"></script>
+<script src="detalles.js"></script>
+</body>
+</html>
