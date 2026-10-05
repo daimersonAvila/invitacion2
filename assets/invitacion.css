@@ -1,6 +1,5 @@
 :root{--vino:#1a0303;--rojo:#4a0000;--rojo2:#7a0e0e;--oro:#d4af37;--oro2:#f9e596;--crema:#fff0f5}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{font-family:"Playfair Display",serif;background:#1a0000;color:var(--crema);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 body.bloqueado{overflow:hidden;height:100dvh}
 img{display:block;max-width:100%}
@@ -103,3 +102,16 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);
 .js .rev.in{opacity:1;transform:none}
 :focus-visible{outline:3px solid var(--oro2);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.petalo{display:none}.js .rev{opacity:1;transform:none}}
+
+/* Recorrido automático, mariposas y variedad de entradas */
+#autoBtn{position:fixed;top:calc(max(16px,env(safe-area-inset-top)) + 62px);right:16px;z-index:9000;width:52px;height:52px;border-radius:50%;border:2px solid var(--oro);background:rgba(74,0,0,.85);color:var(--oro2);font-size:.95rem;cursor:pointer;display:grid;place-items:center;box-shadow:0 5px 20px rgba(0,0,0,.6),0 0 15px rgba(212,175,55,.4)}
+#mariposas{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden}
+.mari{position:fixed;left:0;top:0;width:40px;opacity:0;pointer-events:none;animation:aleteo .45s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(255,255,255,.3))}
+@keyframes aleteo{50%{scale:1 .68}}
+.js .foto.rev:not(.in){transform:translateY(46px) scale(.93) rotate(-2.5deg)}
+.js .marco.rev:not(.in){transform:scale(.92)}
+.js .rejilla figure.rev:nth-child(odd):not(.in){transform:translateX(-46px) rotate(-3deg)}
+.js .rejilla figure.rev:nth-child(even):not(.in){transform:translateX(46px) rotate(3deg)}
+.js .rejilla figure:nth-child(3).rev{transition-delay:.15s}.js .rejilla figure:nth-child(4).rev{transition-delay:.3s}
+.js .corona.rev:not(.in){transform:translateY(-30px) scale(.8)}
+@media (prefers-reduced-motion:reduce){.mari{display:none}}

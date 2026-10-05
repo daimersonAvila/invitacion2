@@ -13,6 +13,8 @@
 <div id="musica"><iframe id="yt" title="Música" allow="autoplay; encrypted-media" tabindex="-1"></iframe></div>
 <button id="musicBtn" aria-label="Música"><span>♪</span></button>
 <div id="petalos" aria-hidden="true"></div>
+<div id="mariposas" aria-hidden="true"></div>
+<button id="autoBtn" aria-label="Pausar o reanudar el recorrido automático"><span>❚❚</span></button>
 
 <!-- PORTADA: el libro se abre al tocarlo -->
 <div id="portada">
@@ -36,7 +38,7 @@
   </section>
 
   <!-- 2. Mensaje -->
-  <section class="sec">
+  <section class="sec" data-corazon>
     <div class="marco rev">
       <img class="corona" src="assets/img/corona.png" alt="" />
       <p class="texto">Con la bendición de Dios y el amor que mi familia me ha brindado, me siento feliz de haber llegado a este momento de mi vida, el día que dejaré atrás mi infancia y comenzaré una nueva etapa.</p>
@@ -56,7 +58,7 @@
   </section>
 
   <!-- 5. Fecha, cuenta regresiva, calendario -->
-  <section class="sec fecha">
+  <section class="sec fecha" data-corazon>
     <h2 class="rev invita">Nos complace invitarte<br />a los 15 años de nuestra princesa</h2>
     <div class="dia rev">
       <div><b>Domingo</b><i>2:00 pm</i></div>
@@ -105,7 +107,7 @@
   </section>
 
   <!-- 9. Confirmación y cierre -->
-  <section class="sec cierre">
+  <section class="sec cierre" data-corazon>
     <img class="corona rev" src="assets/img/corona.png" alt="" />
     <p class="mensaje rev" id="mensaje">Tu presencia hará que este día sea inolvidable</p>
     <a class="boton rev" id="confirmar" target="_blank" rel="noopener">Confirmar asistencia</a>
