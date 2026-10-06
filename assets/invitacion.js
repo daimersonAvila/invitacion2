@@ -8,7 +8,7 @@ const CONFIG = {
   volumen: 40,
   fecha: "2026-11-29T14:00:00-05:00",
   whatsapp: "573142739961",
-  mapa: "https://www.google.com/maps/search/Capilla+Vereda+Chen",
+  mapa: "https://www.youtube.com/watch?v=HF-_IqvEMgo&list=RDHF-_IqvEMgo&start_radio=1",
   auto: true, // recorrido automático
   // Tiempo de lectura (ms): base + por palabra + por foto. Súbelos si quieren más calma.
   lectura: { base: 3000, porPalabra: 500, porFoto: 1500, max: 24000 },
