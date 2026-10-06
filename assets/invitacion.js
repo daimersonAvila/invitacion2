@@ -3,7 +3,7 @@
    ========================================================= */
 const CONFIG = {
   // Pega aquí el enlace de YouTube de "Tiempo de Vals" (o solo el ID del video)
-  musica: "https://www.youtube.com/watch?v=OiC1rgCPmUQ",
+  musica: "https://www.youtube.com/watch?v=HF-_IqvEMgo&list=RDHF-_IqvEMgo&start_radio=1",
   inicio: 0, // segundo donde empieza la canción
   volumen: 40,
   fecha: "2026-11-29T14:00:00-05:00",
