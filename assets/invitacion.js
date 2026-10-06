@@ -3,7 +3,7 @@
    ========================================================= */
 const CONFIG = {
   // Pega aquí el enlace de YouTube de "Tiempo de Vals" (o solo el ID del video)
-  musica: "https://www.youtube.com/watch?v=HF-_IqvEMgo&list=RDHF-_IqvEMgo&start_radio=1",
+  musica: "https://www.youtube.com/watch?v=OiC1rgCPmUQ",
   inicio: 0, // segundo donde empieza la canción
   volumen: 40,
   fecha: "2026-11-29T14:00:00-05:00",
@@ -54,9 +54,6 @@ $("abrir").addEventListener("click", () => {
 
 /* ---------- Enlaces ---------- */
 $("mapa").href = CONFIG.mapa;
-$("confirmar").href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(
-  "¡Hola! Confirmo mi asistencia a los XV años de Keidy Julieth 💖\n\nNombre:\nPersonas:"
-)}`;
 
 /* ---------- Cuenta regresiva ---------- */
 const meta = new Date(CONFIG.fecha).getTime();
@@ -109,11 +106,6 @@ document.querySelectorAll(".rev").forEach((el) => io.observe(el));
   }, 4000);
 })();
 
-/* ---------- Galería: tocar para ampliar ---------- */
-document.querySelectorAll(".rejilla img").forEach((img) =>
-  img.addEventListener("click", () => { $("visor").querySelector("img").src = img.src; $("visor").hidden = false; })
-);
-$("visor").addEventListener("click", () => ($("visor").hidden = true));
 
 /* ---------- Pétalos: una lluvia al llegar a cada sección ---------- */
 function rafaga(n = 12) {
@@ -178,7 +170,7 @@ const irA = (y, ms, t) => new Promise((ok) => {
 });
 function tiempo(s) {
   const L = CONFIG.lectura, palabras = s.innerText.split(/\s+/).filter(Boolean).length;
-  return Math.min(L.max, L.base + L.porPalabra * palabras + L.porFoto * s.querySelectorAll("figure").length);
+  return Math.min(L.max, L.base + L.porPalabra * palabras + L.porFoto * s.querySelectorAll("figure").length + (s.classList.contains("cierre") ? 8000 : 0));
 }
 async function recorrer(desde) {
   const t = ++tok; auto = true; ui();
