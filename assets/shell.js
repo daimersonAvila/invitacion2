@@ -229,7 +229,7 @@ setTimeout(() => {
 
 // ================================================================
 //  ✅ CONTADOR CENTRADO ABAJO
-//  Fecha del evento: 29 Noviembre 2026 · 2:00 PM (UTC-5 Colombia)
+//  Fecha del evento: 29 Noviembre 2026 · 4:00 PM (UTC-5 Colombia)
 // ================================================================
 const FECHA_EVENTO = new Date('2026-11-29T14:00:00-05:00').getTime();
 
