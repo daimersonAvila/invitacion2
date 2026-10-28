@@ -18,10 +18,13 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card"        content="summary_large_image" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/invitacion.css" />
 </head>
 <body class="bloqueado">
+<!-- Filtro que rompe los bordes de los pergaminos de CSS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rugoso" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="14"/></filter></svg>
+
 
 <!-- Música (YouTube oculto). El enlace se cambia en assets/invitacion.js -->
 <div id="musica"><iframe id="yt" title="Música" allow="autoplay; encrypted-media" tabindex="-1"></iframe></div>
@@ -41,7 +44,7 @@
 
 <main>
 
-  <!-- 1. Hero -->
+  <!-- 1. Portada -->
   <section class="sec hero">
     <img class="flores" src="assets/img/flores1.png" alt="" />
     <img class="bfly b1" src="assets/img/mar1.png" alt="" />
@@ -56,33 +59,38 @@
     <img class="princesa" src="assets/img/princesa1.png" alt="Keidy Julieth" />
   </section>
 
-  <!-- 2. Mensaje con el castillo -->
-  <section class="sec" data-corazon>
-    <img class="corona rev" src="assets/img/corona.png" alt="" />
-    <p class="mensaje-script rev">Con la bendición de Dios y el amor que mi familia me ha brindado, me siento feliz de haber llegado a este momento de mi vida, el día que dejaré atrás mi infancia y comenzaré una nueva etapa.</p>
-    <div class="castillo rev">
-      <img src="assets/img/castillo.png" alt="Castillo" loading="lazy" />
-      <img class="rosas" src="assets/img/rosa1.png" alt="" />
+  <!-- 2. Sobre con sello: se abre solo y asoma la foto -->
+  <section class="sec sobre-sec" data-palabras="4">
+    <div class="sobre rev" aria-label="Sobre con la invitación">
+      <div class="sobre-dorso"></div>
+      <figure class="sobre-foto"><img src="assets/fotos/foto3.jpg" alt="Keidy Julieth" loading="lazy" /></figure>
+      <div class="sobre-frente"></div>
+      <div class="sobre-tapa"><div class="tapa-forma"></div><div class="sello"><span>XV</span></div></div>
     </div>
   </section>
 
-  <!-- 3. Foto 1 -->
+  <!-- 3. Mensaje (imagen del pergamino) -->
+  <section class="sec sec-perg" data-corazon data-palabras="42">
+    <img class="pergamino-img rev" src="assets/img/pergamino.png" alt="Con la bendición de Dios y el amor que mi familia me ha brindado, me siento feliz de haber llegado a este momento de mi vida, el día que dejaré atrás mi infancia y comenzaré una nueva etapa." loading="lazy" />
+  </section>
+
+  <!-- 4. Foto 1 -->
   <section class="band">
-    <figure class="foto rev">
-      <img src="assets/fotos/foto1.jpg" alt="Keidy Julieth" loading="lazy" />
-    </figure>
+    <figure class="foto rev"><img src="assets/fotos/foto1.jpg" alt="Keidy Julieth" loading="lazy" /></figure>
   </section>
 
-  <!-- 4. Padres -->
+  <!-- 5. Padres (marco dorado con destellos) -->
   <section class="sec">
-    <img class="corona rev" src="assets/img/corona1.png" alt="" />
-    <h2 class="rev">Mis padres</h2>
-    <p class="nombres rev">Aristóbulo Ávila<br /><span>&amp;</span><br />Mireya Rodríguez</p>
-    <h2 class="rev">Mi hermano</h2>
-    <p class="nombres rev">Daimerson Ávila</p>
+    <div class="marco-oro rev">
+      <h2 class="script-t">Mis padres</h2>
+      <p class="nombres">Aristóbulo Ávila<br /><span>&amp;</span><br />Mireya Rodríguez</p>
+      <span class="filete"></span>
+      <h2 class="script-t">Mi hermano</h2>
+      <p class="nombres">Daimerson Ávila</p>
+    </div>
   </section>
 
-  <!-- 5. Fecha, cuenta regresiva, calendario -->
+  <!-- 6. Invitación y fecha -->
   <section class="sec fecha" data-corazon>
     <h2 class="rev invita">
       Nos complace invitarte<br />
@@ -95,41 +103,76 @@
       <strong>29</strong>
       <div><b>Noviembre</b><i>2026</i></div>
     </div>
-    <div class="cuenta rev">
-      <p>Solo faltan:</p>
-      <div class="cuenta-fila">
-        <div><span id="cd-dias">--</span><small>Días</small></div><em>:</em>
-        <div><span id="cd-horas">--</span><small>Horas</small></div><em>:</em>
-        <div><span id="cd-min">--</span><small>Min</small></div><em>:</em>
-        <div><span id="cd-seg">--</span><small>Seg</small></div>
-      </div>
+  </section>
+
+  <!-- 7. Banda con la cuenta regresiva -->
+  <section class="sec banda">
+    <div class="cinta rev"><span>29 de noviembre de 2026</span></div>
+    <p class="script-t grande rev">Que comience la</p>
+    <p class="cuenta-t rev">Cuenta regresiva</p>
+    <div class="cuenta-fila rev">
+      <div><span id="cd-dias">--</span><small>Días</small></div><em>:</em>
+      <div><span id="cd-horas">--</span><small>Horas</small></div><em>:</em>
+      <div><span id="cd-min">--</span><small>Minutos</small></div><em>:</em>
+      <div><span id="cd-seg">--</span><small>Segundos</small></div>
     </div>
+  </section>
+
+  <!-- 8. Castillo (separador) -->
+  <section class="sec">
+    <div class="castillo rev">
+      <img src="assets/img/castillo.png" alt="Castillo" loading="lazy" />
+      <img class="rosas" src="assets/img/rosa1.png" alt="" />
+    </div>
+  </section>
+
+  <!-- 9. Agenda la fecha -->
+  <section class="sec agenda">
+    <h2 class="script-t grande rev">Agenda la fecha</h2>
+    <div class="orn rev" aria-hidden="true"><i></i><b>❦</b><i></i></div>
     <div class="calendario rev" id="calendario" aria-label="Calendario de noviembre 2026"></div>
   </section>
 
-  <!-- 6. Foto 2 -->
-  <section class="band">
-    <figure class="foto rev">
-      <img src="assets/fotos/foto2.jpg" alt="Keidy Julieth" loading="lazy" />
-    </figure>
-  </section>
-
-
-
-  <!-- 8. Lugares -->
+  <!-- 10. Mensaje breve en marco dorado -->
   <section class="sec">
-    <div class="marco rev">
-      <h2>Ceremonia religiosa</h2>
-      <p class="lugar">Capilla Vereda Chen</p>
-      <h2>4:00 pm</h2>
-      <span class="filete"></span>
-      <h2>Recepción y celebración</h2>
-      <p class="lugar">Residencia Familia Avila Rodríguez</p>
-      <a class="boton" id="mapa" target="_blank" rel="noopener">Ver ubicación</a>
+    <div class="marco-oro rev">
+      <p class="texto">Mi corazón se llena de gozo al saber que Dios me ha permitido llegar a este día tan especial. Acompáñame a darle gracias.</p>
     </div>
   </section>
 
-  <!-- 9. Cierre con fuegos -->
+  <!-- 11. Foto 2 -->
+  <section class="band">
+    <figure class="foto rev"><img src="assets/fotos/foto2.jpg" alt="Keidy Julieth" loading="lazy" /></figure>
+  </section>
+
+  <!-- 12. Lugares (pergamino) -->
+  <section class="sec">
+    <div class="pergamino rev">
+      <img class="rosas-a" src="assets/img/racimo1.png" alt="" />
+      <div class="perg-cont">
+        <svg class="icono" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 3v12M26 8h12"/><path d="M14 57V31l18-12 18 12v26z"/><path d="M26 57V43a6 6 0 0 1 12 0v14"/><path d="M7 57h50"/></svg>
+        <h2 class="script-t">Ceremonia religiosa</h2>
+        <p class="lugar">Capilla Vereda Chen</p>
+        <p class="hora">4:00 pm</p>
+        <span class="filete"></span>
+        <svg class="icono" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="rotate(-14 20 40)"><path d="M12 8h16l-2 20a6 6 0 0 1-12 0z"/><path d="M20 34v18M13 54h14"/></g><g transform="rotate(14 44 40)"><path d="M36 8h16l-2 20a6 6 0 0 1-12 0z"/><path d="M44 34v18M37 54h14"/></g><path d="M30 4l1.5 4M36 3l-1 4M26 6l2 3" stroke-width="1.8"/></svg>
+        <h2 class="script-t">Recepción y celebración</h2>
+        <p class="lugar">Residencia Familia Avila Rodríguez</p>
+        <a class="boton" id="mapa" target="_blank" rel="noopener">Ver ubicación</a>
+      </div>
+      <img class="rosas-b" src="assets/img/racimo2.png" alt="" />
+    </div>
+  </section>
+
+  <!-- 13. Versículo en banda -->
+  <section class="sec banda verso" data-palabras="16">
+    <blockquote class="rev">
+      <p>“Está vestida de fuerza y dignidad, y se ríe sin temor al futuro.”</p>
+      <cite>Proverbios 31:25</cite>
+    </blockquote>
+  </section>
+
+  <!-- 14. Cierre con fuegos -->
   <section class="sec cierre" data-corazon>
     <canvas id="fuegos" aria-hidden="true"></canvas>
     <img class="corona rev" src="assets/img/corona.png" alt="" />

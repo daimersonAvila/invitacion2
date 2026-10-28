@@ -6,7 +6,7 @@ const CONFIG = {
   musica: "https://www.youtube.com/watch?v=HF-_IqvEMgo&list=RDHF-_IqvEMgo&start_radio=1",
   inicio: 5, // segundo donde empieza la canción
   volumen: 40,
-  fecha: "2026-11-29T14:00:00-05:00",
+  fecha: "2026-11-29T16:00:00-05:00",
   whatsapp: "573142739961",
   mapa: "https://www.google.com/maps/search/Capilla+Vereda+Chen",
   auto: true, // recorrido automático
@@ -169,7 +169,7 @@ const irA = (y, ms, t) => new Promise((ok) => {
   })(t0);
 });
 function tiempo(s) {
-  const L = CONFIG.lectura, palabras = s.innerText.split(/\s+/).filter(Boolean).length;
+  const L = CONFIG.lectura, palabras = +s.dataset.palabras || s.innerText.split(/\s+/).filter(Boolean).length;
   return Math.min(L.max, L.base + L.porPalabra * palabras + L.porFoto * s.querySelectorAll("figure").length + (s.classList.contains("cierre") ? 8000 : 0));
 }
 async function recorrer(desde) {
@@ -192,3 +192,6 @@ btnAuto.addEventListener("click", () => {
   if (auto) { tok++; auto = false; ui(); return; }
   recorrer(Math.max(0, secs.findIndex((s) => s.getBoundingClientRect().bottom > innerHeight * 0.5)));
 });
+
+/* ---------- Esquinas ornamentales de los marcos dorados ---------- */
+document.querySelectorAll(".marco-oro").forEach((m) => { for (let i = 0; i < 4; i++) m.insertAdjacentHTML("beforeend", '<i class="esq e' + (i + 1) + '" aria-hidden="true"></i>'); });
