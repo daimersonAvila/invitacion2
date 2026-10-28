@@ -1,0 +1,427 @@
+/* ================================================================
+   PADRE.CSS - Sección "Mis Padres" + Hermano
+   Diseño 100% responsivo para celular
+   ================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    background: #1a0303;
+}
+
+#pageFlip {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+/* ================================================================
+   SECCIÓN PRINCIPAL
+   ================================================================ */
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding: 3vh 20px 90px; /* espacio abajo para el contador */
+    text-align: center;
+}
+
+/* ================================================================
+   ✅ FONDO ROJO OSCURO ELEGANTE (igual que el resto)
+   ================================================================ */
+.bg-dark-red,
+.bg-gradient-red-pink {
+    background:
+            radial-gradient(
+                    ellipse at 50% 15%,
+                    rgba(160, 25, 25, 0.7) 0%,
+                    transparent 55%
+            ),
+            radial-gradient(
+                    ellipse at 50% 85%,
+                    rgba(100, 10, 10, 0.6) 0%,
+                    transparent 60%
+            ),
+            radial-gradient(
+                    ellipse at 15% 40%,
+                    rgba(80, 0, 0, 0.4) 0%,
+                    transparent 50%
+            ),
+            radial-gradient(
+                    ellipse at 85% 60%,
+                    rgba(80, 0, 0, 0.4) 0%,
+                    transparent 50%
+            ),
+            linear-gradient(
+                    170deg,
+                    #5a0808 0%,
+                    #450404 30%,
+                    #300202 60%,
+                    #1a0000 100%
+            );
+}
+
+/* Destellos dorados */
+.bg-dark-red::before,
+.bg-gradient-red-pink::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+            radial-gradient(circle at 15% 20%, rgba(255, 200, 100, 0.18) 0%, transparent 2%),
+            radial-gradient(circle at 85% 15%, rgba(255, 200, 100, 0.15) 0%, transparent 1.5%),
+            radial-gradient(circle at 25% 70%, rgba(255, 200, 100, 0.12) 0%, transparent 1.8%),
+            radial-gradient(circle at 75% 85%, rgba(255, 200, 100, 0.15) 0%, transparent 1.5%),
+            radial-gradient(circle at 50% 50%, rgba(255, 200, 100, 0.08) 0%, transparent 3%);
+    pointer-events: none;
+    z-index: 0;
+    animation: parpadeo 4s ease-in-out infinite;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ================================================================
+   ✅ CORONA - Tamaño controlado y responsivo
+   ================================================================ */
+.crown-display {
+    position: relative;
+    /* ✅ Tamaño responsivo: entre 25% y 35% del ancho */
+    width: 30vw;
+    max-width: 130px;
+    min-width: 90px;
+    margin-bottom: 1.5vh;
+    z-index: 5;
+    animation: coronaEntrar 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.1) 0.2s both;
+}
+
+@keyframes coronaEntrar {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-30px);
+        filter: blur(10px) brightness(1.8);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.08) translateY(5px);
+        filter: blur(0) brightness(1.3);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+.crown-display img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    filter:
+            drop-shadow(0 0 20px rgba(212, 175, 55, 0.85))
+            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+/* ================================================================
+   ✅ CONTENEDOR DE CONTENIDO
+   ================================================================ */
+.content-wrapper {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    gap: 1vh;
+}
+
+/* ================================================================
+   ✅ SUBTÍTULO "Mis Padres:" / "Mi Hermano:"
+   ================================================================ */
+.section-subtitle {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.95rem, 4.5vw, 1.4rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #d4af37;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+
+    -webkit-text-stroke: 0.3px #8b6914;
+    text-stroke: 0.3px #8b6914;
+
+    text-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.9),
+            0 0 12px rgba(255, 215, 0, 0.8);
+
+    animation: subtituloEntrar 1s ease-out 0.6s both;
+}
+
+.brother-subtitle {
+    margin-top: 2vh;
+    animation: subtituloEntrar 1s ease-out 1.5s both;
+}
+
+@keyframes subtituloEntrar {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* ================================================================
+   ✅ NOMBRES
+   ================================================================ */
+.parents-names {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(1.7rem, 8vw, 2.8rem);
+    line-height: 1.3;
+    color: #ffd700;
+    text-align: center;
+    margin: 0;
+    padding: 0 10px;
+
+    -webkit-text-stroke: 0.5px #8b6914;
+    text-stroke: 0.5px #8b6914;
+
+    text-shadow:
+            0 3px 6px rgba(0, 0, 0, 0.8),
+            0 0 15px rgba(255, 215, 0, 0.9),
+            0 0 30px rgba(255, 215, 0, 0.5);
+
+    animation: nombresEntrar 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.1) 0.9s both;
+}
+
+.brother-name {
+    animation: nombresEntrar 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.1) 1.7s both;
+}
+
+@keyframes nombresEntrar {
+    0% {
+        opacity: 0;
+        transform: scale(0.7) translateY(20px);
+        filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+
+.ampersand {
+    display: inline-block;
+    font-size: 0.8em;
+    color: #f9e596;
+    margin: 0.2em 0;
+    text-shadow:
+            0 0 12px rgba(255, 215, 0, 0.9),
+            0 0 25px rgba(255, 215, 0, 0.6);
+}
+
+/* ================================================================
+   ✅ PRINCESA - Abajo, centrada, responsiva
+   ================================================================ */
+.princess-cutout {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /* ✅ Más pequeña para no chocar */
+    width: 70vw;
+    max-width: 340px;
+    height: auto;
+    max-height: 42vh;
+    object-fit: contain;
+    object-position: bottom center;
+    z-index: 3;
+    pointer-events: none;
+    filter: drop-shadow(0 -8px 20px rgba(0, 0, 0, 0.6));
+
+    animation: princesaEntrar 1.8s cubic-bezier(0.2, 0.9, 0.3, 1.1) 1.3s both;
+}
+
+@keyframes princesaEntrar {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(80px) scale(0.85);
+        filter: blur(10px) drop-shadow(0 -8px 20px rgba(0, 0, 0, 0.6));
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+        filter: blur(0) drop-shadow(0 -8px 20px rgba(0, 0, 0, 0.6));
+    }
+}
+
+/* ================================================================
+   ✅ TRANSICIÓN DE MARIPOSAS
+   ================================================================ */
+#mariposas-transicion {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    pointer-events: none;
+    z-index: 99999;
+    overflow: hidden;
+}
+
+.mariposa-transicion {
+    position: absolute;
+    height: auto;
+    filter:
+            drop-shadow(0 0 25px rgba(255, 215, 0, 1))
+            drop-shadow(0 0 50px rgba(212, 175, 55, 0.8))
+            drop-shadow(0 0 80px rgba(255, 215, 0, 0.5));
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+.mariposa-transicion.volar-derecha {
+    animation: volarDerecha 2.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+@keyframes volarDerecha {
+    0% {
+        transform: translate(0, 0) rotate(-45deg) scale(0.3);
+        opacity: 0;
+    }
+    15% { opacity: 1; }
+    50% {
+        transform: translate(75vw, -75vh) rotate(90deg) scale(1.4);
+        opacity: 1;
+    }
+    85% { opacity: 1; }
+    100% {
+        transform: translate(180vw, -180vh) rotate(270deg) scale(1);
+        opacity: 0;
+    }
+}
+
+.mariposa-transicion.volar-izquierda {
+    animation: volarIzquierda 2.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+    transform: scaleX(-1);
+}
+
+@keyframes volarIzquierda {
+    0% {
+        transform: scaleX(-1) translate(0, 0) rotate(-45deg) scale(0.3);
+        opacity: 0;
+    }
+    15% { opacity: 1; }
+    50% {
+        transform: scaleX(-1) translate(75vw, -75vh) rotate(90deg) scale(1.4);
+        opacity: 1;
+    }
+    85% { opacity: 1; }
+    100% {
+        transform: scaleX(-1) translate(180vw, -180vh) rotate(270deg) scale(1);
+        opacity: 0;
+    }
+}
+
+/* ================================================================
+   RESPONSIVE - Ajustes finos por altura
+   ================================================================ */
+
+/* Pantallas pequeñas (iPhone SE) */
+@media (max-height: 700px) {
+    .section {
+        padding: 2vh 18px 80px;
+    }
+    .crown-display {
+        width: 26vw;
+        max-width: 100px;
+        margin-bottom: 1vh;
+    }
+    .section-subtitle {
+        font-size: clamp(0.85rem, 4vw, 1.15rem);
+        letter-spacing: 2px;
+    }
+    .brother-subtitle {
+        margin-top: 1.2vh;
+    }
+    .parents-names {
+        font-size: clamp(1.5rem, 7vw, 2.3rem);
+    }
+    .princess-cutout {
+        max-height: 38vh;
+        max-width: 300px;
+    }
+}
+
+/* Pantallas grandes (Pro Max, tablets) */
+@media (min-height: 900px) {
+    .crown-display {
+        width: 32vw;
+        max-width: 150px;
+        margin-bottom: 2vh;
+    }
+    .section-subtitle {
+        font-size: clamp(1.1rem, 5vw, 1.55rem);
+    }
+    .parents-names {
+        font-size: clamp(2rem, 9vw, 3.2rem);
+    }
+    .princess-cutout {
+        max-height: 48vh;
+        max-width: 420px;
+    }
+}
+
+/* Modo horizontal (landscape) */
+@media (orientation: landscape) {
+    .section {
+        padding: 2vh 18px 70px;
+    }
+    .crown-display {
+        width: 16vh;
+        max-width: 100px;
+        margin-bottom: 0.5vh;
+    }
+    .section-subtitle {
+        font-size: clamp(0.8rem, 2.5vw, 1rem);
+        letter-spacing: 2px;
+    }
+    .brother-subtitle {
+        margin-top: 1vh;
+    }
+    .parents-names {
+        font-size: clamp(1.4rem, 4.5vw, 2rem);
+    }
+    .princess-cutout {
+        max-height: 50vh;
+        max-width: 220px;
+    }
+}

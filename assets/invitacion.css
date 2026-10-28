@@ -1,8 +1,3 @@
-/* =========================================================
-   INVITACIÓN KEIDY JULIETH — CSS v2.0
-   Base: original que funcionaba · + mejoras visuales
-   ========================================================= */
-
 :root{--vino:#1a0303;--rojo:#4a0000;--rojo2:#7a0e0e;--oro:#d4af37;--oro2:#f9e596;--crema:#fff0f5}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Playfair Display",serif;background:#1a0000;color:var(--crema);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
@@ -11,14 +6,14 @@ img{display:block;max-width:100%}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at top,#7a0e0e 0%,#4a0000 50%,#1a0000 100%)}
 main{max-width:520px;margin:0 auto;position:relative}
 
-/* ── Secciones ── */
+/* Secciones */
 .sec{position:relative;min-height:auto;padding:56px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;overflow:hidden}
 .band{padding:14px 22px}
 h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);letter-spacing:.14em;color:var(--oro2)}
 .corona{width:min(60%,230px);filter:drop-shadow(0 0 14px var(--oro))}
 .flores{position:absolute;top:0;left:0;width:100%;pointer-events:none}
 
-/* ── Hero ── */
+/* Hero */
 .hero{min-height:100svh;justify-content:flex-start;padding:min(40vw,190px) 0 0;gap:0}
 .aro{position:relative;width:min(68%,290px)}
 .aro img{width:100%;filter:drop-shadow(0 0 14px rgba(212,175,55,.6))}
@@ -35,7 +30,7 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);
 @keyframes vuelo2{50%{transform:translate(-90px,-60px) rotate(-30deg)}}
 @keyframes vuelo3{50%{transform:translate(60px,-120px) rotate(18deg)}}
 
-/* ── Marcos de texto ── */
+/* Marcos de texto */
 .marco{position:relative;width:100%;padding:38px 24px;border:1px solid var(--oro);outline:1px solid rgba(212,175,55,.45);outline-offset:6px;background:rgba(0,0,0,.28);display:flex;flex-direction:column;align-items:center;gap:14px}
 .texto{font-style:italic;font-size:clamp(1.05rem,4.7vw,1.3rem);line-height:1.85;color:var(--crema)}
 .lugar{font-size:1.2rem;color:var(--crema)}
@@ -46,13 +41,18 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);
 .boton{display:inline-block;margin-top:10px;padding:15px 34px;border-radius:50px;border:2px solid var(--oro2);background:linear-gradient(135deg,var(--oro2),var(--oro));color:var(--rojo);font:700 .95rem Cinzel,serif;letter-spacing:.1em;text-decoration:none;box-shadow:0 6px 22px rgba(212,175,55,.4);transition:transform .25s}
 .boton:hover,.boton:focus-visible{transform:scale(1.05)}
 
-/* ── Fotos ── */
+/* Fotos */
 .foto{width:100%;padding:8px;background:linear-gradient(135deg,var(--oro2),var(--oro),#8a6a12);box-shadow:0 14px 40px rgba(0,0,0,.6)}
 .foto img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.rejilla{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+.rejilla figure{padding:5px;background:var(--oro);cursor:zoom-in}
+.rejilla img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.galeria{gap:26px}
+#visor{position:fixed;inset:0;z-index:9990;background:rgba(10,0,0,.92);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+#visor[hidden]{display:none}
+#visor img{max-height:92dvh;border:3px solid var(--oro)}
 
-
-
-/* ── Fecha ── */
+/* Fecha */
 .invita{line-height:1.8}
 .dia{display:flex;align-items:center;justify-content:center;gap:18px}
 .dia div{display:flex;flex-direction:column;gap:4px}
@@ -72,13 +72,13 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);
 .cal-rejilla b{font:700 .8rem Cinzel,serif;color:var(--oro2)}
 .cal-rejilla .hoy{display:grid;place-items:center;width:34px;height:34px;margin:0 auto;border-radius:50%;background:var(--oro);color:var(--rojo);font-weight:700;box-shadow:0 0 14px var(--oro)}
 
-/* ── Cierre ── */
+/* Cierre */
 .cierre{gap:22px}
 .mensaje{font-style:italic;font-size:clamp(1.2rem,5.4vw,1.5rem);line-height:1.7;min-height:5.2em;display:flex;align-items:center;max-width:90%;transition:opacity .5s,transform .5s}
 .final{margin-top:12px}
 .rosa{width:min(46%,190px);filter:drop-shadow(0 0 18px rgba(0,0,0,.6))}
 
-/* ── Portada ── */
+/* Portada */
 #portada{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:radial-gradient(circle at center,#3a0a0a,var(--vino));transition:opacity 1.2s,visibility 1.2s}
 #portada.abierta{opacity:0;visibility:hidden;pointer-events:none}
 #abrir{background:none;border:0;color:var(--oro2);display:flex;flex-direction:column;align-items:center;gap:24px;cursor:pointer;font:italic 1.05rem "Playfair Display",serif}
@@ -88,29 +88,22 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);
 @keyframes flota{50%{transform:translateY(-10px)}}
 @keyframes pulso{50%{opacity:.55}}
 
-/* ── Botón música ── */
+/* Botón de música y pétalos */
 #musicBtn{position:fixed;top:max(16px,env(safe-area-inset-top));right:16px;z-index:9000;width:52px;height:52px;border-radius:50%;border:2px solid var(--oro);background:linear-gradient(135deg,#b30000,var(--rojo));color:var(--oro2);font-size:1.5rem;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.6),0 0 15px rgba(212,175,55,.5)}
 #musicBtn.playing span{display:inline-block;animation:gira 3s linear infinite}
 @keyframes gira{to{transform:rotate(360deg)}}
-
-/* ── Iframe de YouTube OCULTO ──
-   IMPORTANTE: no usar visibility:hidden ni clip-path aquí.
-   position:absolute + width/height:1px + opacity:0 es suficiente
-   para ocultarlo sin bloquear los postMessages de la API de YouTube. ── */
 #musica{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
-
-/* ── Pétalos ── */
 #petalos{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
 .petalo{position:absolute;top:-8vh;opacity:.9;animation:cae linear infinite;filter:drop-shadow(0 0 4px rgba(179,0,0,.5))}
 @keyframes cae{to{transform:translate(var(--dx),112vh) rotate(var(--rot))}}
 
-/* ── Scroll reveal ── */
+/* Aparición al hacer scroll (la activa el JS) */
 .js .rev{opacity:0;transform:translateY(36px);transition:opacity 1s ease,transform 1s ease}
 .js .rev.in{opacity:1;transform:none}
 :focus-visible{outline:3px solid var(--oro2);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.petalo{display:none}.js .rev{opacity:1;transform:none}}
 
-/* ── Recorrido automático y mariposas ── */
+/* Recorrido automático, mariposas y variedad de entradas */
 #autoBtn{position:fixed;top:calc(max(16px,env(safe-area-inset-top)) + 62px);right:16px;z-index:9000;width:52px;height:52px;border-radius:50%;border:2px solid var(--oro);background:rgba(74,0,0,.85);color:var(--oro2);font-size:.95rem;cursor:pointer;display:grid;place-items:center;box-shadow:0 5px 20px rgba(0,0,0,.6),0 0 15px rgba(212,175,55,.4)}
 #mariposas{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden}
 .mari{position:fixed;left:0;top:0;width:40px;opacity:0;pointer-events:none;animation:aleteo .45s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(255,255,255,.3))}
@@ -119,17 +112,16 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);
 .js .marco.rev:not(.in){transform:scale(.92)}
 .js .rejilla figure.rev:nth-child(odd):not(.in){transform:translateX(-46px) rotate(-3deg)}
 .js .rejilla figure.rev:nth-child(even):not(.in){transform:translateX(46px) rotate(3deg)}
-.js .rejilla figure:nth-child(3).rev{transition-delay:.15s}
-.js .rejilla figure:nth-child(4).rev{transition-delay:.3s}
+.js .rejilla figure:nth-child(3).rev{transition-delay:.15s}.js .rejilla figure:nth-child(4).rev{transition-delay:.3s}
 .js .corona.rev:not(.in){transform:translateY(-30px) scale(.8)}
 @media (prefers-reduced-motion:reduce){.mari{display:none}}
 
-/* ── Cierre con fuegos artificiales ── */
+/* Cierre con fuegos artificiales */
 .cierre{min-height:100svh}
 #fuegos{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .cierre>*:not(canvas){position:relative;z-index:1}
 
-/* ── Texto con castillo ── */
+/* Mensaje con castillo */
 .mensaje-script{font-family:"Great Vibes",cursive;font-size:clamp(1.7rem,7.6vw,2.3rem);line-height:1.35;color:var(--oro2);text-shadow:0 0 14px rgba(212,175,55,.45),0 2px 6px rgba(0,0,0,.6);max-width:94%}
 .castillo{position:relative;width:100%;margin-top:6px}
 .castillo>img:first-child{width:100%;filter:drop-shadow(0 18px 24px rgba(0,0,0,.65))}

@@ -1,0 +1,128 @@
+/* =========================================================
+   NAV.CSS - Estilos GLOBALES de los botones ‹ ›
+   El !important hace que estos estilos ganen sobre cualquier
+   CSS específico de cada página (padre.css, mis15.css, etc.)
+   ========================================================= */
+
+:root {
+    --dorado: #d4af37;
+    --dorado-claro: #f9e596;
+    --nav-btn-size: 55px; /* ✅ Tamaño único para TODAS las páginas */
+}
+
+/* =========================================================
+   CONTENEDOR DE LOS BOTONES
+   ========================================================= */
+.page-nav {
+    position: fixed !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    z-index: 10000 !important;
+}
+
+/* =========================================================
+   BOTONES ANTERIOR / SIGUIENTE (unificados y grandes)
+   ========================================================= */
+.nav-btn {
+    position: fixed !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+
+    /* ✅ Tamaño único forzado */
+    width: var(--nav-btn-size) !important;
+    height: var(--nav-btn-size) !important;
+
+    border-radius: 50% !important;
+    border: 2px solid var(--dorado) !important;
+    background: rgba(74, 0, 0, 0.65) !important;
+    color: var(--dorado-claro) !important;
+
+    /* ✅ Tamaño de la flecha ‹ › */
+    font-size: 1.6rem !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    cursor: pointer !important;
+    pointer-events: auto !important;
+
+    -webkit-backdrop-filter: blur(4px) !important;
+    backdrop-filter: blur(4px) !important;
+
+    box-shadow:
+            0 0 16px rgba(212, 175, 55, 0.6),
+            0 5px 15px rgba(0, 0, 0, 0.5) !important;
+
+    transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            box-shadow 0.25s ease !important;
+
+    z-index: 10000 !important;
+    padding-bottom: 3px !important;
+}
+
+/* =========================================================
+   POSICIÓN IZQUIERDA / DERECHA
+   ========================================================= */
+.nav-prev {
+    left: 15px !important;
+    right: auto !important;
+}
+
+.nav-next {
+    right: 15px !important;
+    left: auto !important;
+}
+
+/* =========================================================
+   EFECTOS HOVER / ACTIVE
+   ========================================================= */
+.nav-btn:hover {
+    background: rgba(74, 0, 0, 0.9) !important;
+    transform: translateY(-50%) scale(1.08) !important;
+    box-shadow:
+            0 0 24px rgba(212, 175, 55, 0.9),
+            0 5px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+.nav-btn:active {
+    transform: translateY(-50%) scale(0.95) !important;
+}
+
+.nav-btn:disabled {
+    opacity: 0.4 !important;
+    cursor: default !important;
+    pointer-events: none !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Pantallas pequeñas: botones un poco más chicos */
+@media (max-width: 500px) {
+    :root {
+        --nav-btn-size: 50px;
+    }
+    .nav-btn {
+        font-size: 1.5rem !important;
+    }
+    .nav-prev { left: 12px !important; }
+    .nav-next { right: 12px !important; }
+}
+
+/* Pantallas grandes: botones más grandes */
+@media (min-width: 700px) {
+    :root {
+        --nav-btn-size: 62px;
+    }
+    .nav-btn {
+        font-size: 1.8rem !important;
+    }
+    .nav-prev { left: 24px !important; }
+    .nav-next { right: 24px !important; }
+}

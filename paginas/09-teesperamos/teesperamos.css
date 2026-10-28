@@ -1,0 +1,384 @@
+/* ================================================================
+   TEESPERAMOS.CSS - Página final con fuegos artificiales
+   - Mensaje final SUBIDO para no chocar con el contador
+   - Corona arriba
+   - Princesa abajo
+   ================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    background: #1a0303;
+}
+
+#pageFlip {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+/* ================================================================
+   SECCIÓN PRINCIPAL
+   ✅ El padding-bottom de 90px deja espacio para el contador global
+   ================================================================ */
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* ✅ Contenido desde arriba */
+    overflow: hidden;
+    padding: 4vh 20px 90px; /* ✅ 90px abajo para el contador */
+    text-align: center;
+}
+
+/* ================================================================
+   FONDO ROJO OSCURO ELEGANTE
+   ================================================================ */
+.bg-dark-red,
+.bg-gradient-red-pink {
+    background:
+            radial-gradient(
+                    ellipse at 50% 30%,
+                    rgba(140, 20, 20, 0.7) 0%,
+                    transparent 55%
+            ),
+            radial-gradient(
+                    ellipse at 50% 80%,
+                    rgba(80, 0, 0, 0.5) 0%,
+                    transparent 60%
+            ),
+            linear-gradient(
+                    170deg,
+                    #3a0202 0%,
+                    #2a0101 40%,
+                    #1a0000 100%
+            );
+}
+
+/* ================================================================
+   ✅ CANVAS DE FUEGOS ARTIFICIALES
+   ================================================================ */
+#fireworksCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ================================================================
+   CORONA
+   ================================================================ */
+.crown-display {
+    position: relative;
+    margin-bottom: 1vh;
+    width: 32vw;
+    max-width: 130px;
+    z-index: 5;
+    animation: coronaEntrar 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.1) 0.3s both;
+}
+
+@keyframes coronaEntrar {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-30px);
+        filter: blur(10px) brightness(1.8);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.08) translateY(5px);
+        filter: blur(0) brightness(1.3);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+.crown-display img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter:
+            drop-shadow(0 0 20px rgba(212, 175, 55, 0.85))
+            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+/* ================================================================
+   TÍTULO "¡Te Esperamos!"
+   ================================================================ */
+.final-title {
+    position: relative;
+    z-index: 5;
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
+    color: #d4af37;
+    line-height: 1.1;
+    text-align: center;
+    margin-top: 1vh;
+
+    -webkit-text-stroke: 0.5px #8b6914;
+    text-stroke: 0.5px #8b6914;
+
+    text-shadow:
+            0 3px 6px rgba(0, 0, 0, 0.9),
+            0 0 25px rgba(255, 215, 0, 1),
+            0 0 50px rgba(255, 215, 0, 0.7),
+            0 0 80px rgba(255, 215, 0, 0.4);
+
+    animation: tituloEntrar 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.1) 0.6s both;
+}
+
+@keyframes tituloEntrar {
+    0% {
+        opacity: 0;
+        transform: scale(0.4);
+        filter: blur(10px);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.08);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* ================================================================
+   DIVISOR DECORATIVO
+   ================================================================ */
+.divider {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 1.5vh 0;
+    width: 55%;
+    max-width: 200px;
+    animation: subtitleEntrar 1.2s ease-out 0.9s both;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+            to right,
+            transparent,
+            rgba(212, 175, 55, 0.7),
+            transparent
+    );
+}
+
+.divider-icon {
+    font-size: 0.9rem;
+    color: #d4af37;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    animation: girarIcono 6s linear infinite;
+}
+
+@keyframes girarIcono {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes subtitleEntrar {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* ================================================================
+   ✅ MENSAJE FINAL - SUBIDO Y CON MÁS PROTAGONISMO
+   Ahora está justo debajo del divisor, mucho más arriba
+   ================================================================ */
+.final-message {
+    position: relative;
+    z-index: 5;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: clamp(0.95rem, 4vw, 1.15rem);
+    color: #f9e596;
+    text-align: center;
+    max-width: 85%;
+    line-height: 1.6;
+    /* ✅ Reducido el margen para que quede pegado al divisor */
+    margin-top: 0;
+    margin-bottom: 0;
+
+    text-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.9),
+            0 0 12px rgba(255, 215, 0, 0.6);
+
+    animation: subtitleEntrar 1.2s ease-out 1.2s both;
+}
+
+/* ================================================================
+   PRINCESA - Abajo, con espacio para el contador
+   ✅ El `bottom: 70px` la sube un poco para que no choque
+      con el contador global
+   ================================================================ */
+.princess-cutout {
+    position: absolute;
+    /* ✅ Antes bottom: 0, ahora 70px para librar el contador */
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75vw;
+    max-width: 380px;
+    height: auto;
+    max-height: 42vh;
+    object-fit: contain;
+    object-position: bottom center;
+    z-index: 4;
+    pointer-events: none;
+    filter: drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.7));
+
+    animation: princesaEntrar 1.8s cubic-bezier(0.2, 0.9, 0.3, 1.1) 1.5s both;
+}
+
+@keyframes princesaEntrar {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(80px) scale(0.85);
+        filter: blur(10px) drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.7));
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+        filter: blur(0) drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.7));
+    }
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+
+/* Pantallas pequeñas (iPhone SE) */
+@media (max-height: 700px) {
+    .section {
+        padding: 2vh 20px 85px;
+    }
+    .crown-display {
+        width: 26vw;
+        max-width: 100px;
+        margin-bottom: 0.5vh;
+    }
+    .final-title {
+        font-size: clamp(2.2rem, 11vw, 3.4rem);
+    }
+    .divider {
+        margin: 1vh 0;
+    }
+    .final-message {
+        font-size: clamp(0.8rem, 3.4vw, 0.95rem);
+    }
+    .princess-cutout {
+        bottom: 60px;
+        max-height: 38vh;
+        max-width: 320px;
+    }
+}
+
+/* Pantallas grandes (Pro Max, tablets) */
+@media (min-height: 900px) {
+    .section {
+        padding: 5vh 20px 110px;
+    }
+    .crown-display {
+        width: 38vw;
+        max-width: 170px;
+    }
+    .final-title {
+        font-size: clamp(3.5rem, 15vw, 5.5rem);
+    }
+    .final-message {
+        font-size: clamp(1.1rem, 4.2vw, 1.35rem);
+    }
+    /* ================================================================
+    ✅ PRINCESA - Ahora MÁS GRANDE
+    ================================================================ */
+    .princess-cutout {
+        position: absolute;
+        /* ✅ Subida para no chocar con el contador */
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        /* ✅ Antes: 75vw / 380px · Ahora: 95vw / 480px */
+        width: 95vw;
+        max-width: 480px;
+        height: auto;
+        /* ✅ Antes: 42vh · Ahora: 52vh */
+        max-height: 52vh;
+        object-fit: contain;
+        object-position: bottom center;
+        z-index: 4;
+        pointer-events: none;
+        filter: drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.7));
+
+        animation: princesaEntrar 1.8s cubic-bezier(0.2, 0.9, 0.3, 1.1) 1.5s both;
+    }
+
+    @keyframes princesaEntrar {
+        0% {
+            opacity: 0;
+            transform: translateX(-50%) translateY(80px) scale(0.85);
+            filter: blur(10px) drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.7));
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0) scale(1);
+            filter: blur(0) drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.7));
+        }
+    }
+}
+
+/* Modo horizontal (landscape) */
+@media (orientation: landscape) {
+    .section {
+        padding: 2vh 20px 70px;
+    }
+    .crown-display {
+        width: 18vh;
+        max-width: 100px;
+    }
+    .final-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    .final-message {
+        font-size: clamp(0.85rem, 2.5vw, 1rem);
+    }
+    .princess-cutout {
+        bottom: 50px;
+        max-height: 45vh;
+        max-width: 240px;
+    }
+}

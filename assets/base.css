@@ -1,0 +1,837 @@
+/* ===== VARIABLES Y RESET ===== */
+:root {
+  --rojo-oscuro: #4a0000;
+  --rojo: #b30000;
+  --rojo-brillante: #e60000;
+  --dorado: #d4af37;
+  --dorado-claro: #f9e596;
+  --rosa-claro: #fff0f5;
+  --rosa: #ffd1dc;
+  --rosa-fuerte: #ffb6c1;
+  --negro: #1a1a1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Lato", sans-serif;
+  background: linear-gradient(160deg, #4a0000 0%, #b30000 35%, #d4af37 70%, #ffd1dc 100%);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+/* ===== DISEÑO EXCLUSIVO PARA MÓVIL ===== */
+.main-content,
+.intro {
+  width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ===== INTRO / LIBRO (SIN FONDO BLANCO) ===== */
+.intro {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #3a0a0a 0%, #1a0303 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition:
+    opacity 1.2s ease,
+    visibility 1.2s;
+}
+.intro.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.book-scene {
+  perspective: 2000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.book {
+  position: relative;
+  width: 85vw;
+  max-width: 350px;
+  height: 120vw;
+  max-height: 500px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  animation: floatBook 4s ease-in-out infinite;
+}
+@keyframes floatBook {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.book-inner {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px 16px 16px 8px;
+}
+.smoke-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  mix-blend-mode: screen;
+}
+.book.open .smoke-video {
+  opacity: 1;
+}
+
+.book-cover {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transition: transform 2s cubic-bezier(0.65, 0, 0.35, 1);
+  backface-visibility: hidden;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.book.open .book-cover {
+  transform: rotateY(-170deg);
+}
+
+.book-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8));
+}
+.cover-hint {
+  position: absolute;
+  bottom: 15px;
+  font-family: "Lato", sans-serif;
+  color: var(--dorado-claro);
+  font-size: clamp(0.7rem, 3vw, 0.9rem);
+  letter-spacing: 2px;
+  animation: pulse 2s infinite;
+  text-shadow:
+    0 0 10px #000,
+    0 0 5px #000;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid var(--dorado);
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-content {
+  transition: opacity 1.2s;
+}
+.main-content.hidden {
+  opacity: 0;
+}
+
+.section {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: clamp(40px, 10vw, 80px) clamp(15px, 5vw, 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== FONDOS DEGRADADOS MÁGICOS (Reemplazan las imágenes) ===== */
+
+/* Fondo Rojo Profundo */
+.bg-dark-red {
+  background: radial-gradient(
+    circle at top,
+    #7a0e0e 0%,
+    #4a0000 50%,
+    #1a0000 100%
+  );
+}
+
+/* Fondo Rosa Mágico / Suave */
+.bg-light-pink {
+  background: radial-gradient(
+    circle at center,
+    #fff0f5 0%,
+    #ffd1dc 50%,
+    #ffb6c1 100%
+  );
+}
+
+/* Degradado de Rosa a Rojo (Para transiciones) */
+.bg-gradient-pink-red {
+  background: linear-gradient(160deg, #ffd1dc 0%, #ffb6c1 30%, #b30000 100%);
+}
+
+/* Degradado de Rojo a Rosa (Para transiciones inversas) */
+.bg-gradient-red-pink {
+  background: linear-gradient(160deg, #b30000 0%, #ffb6c1 70%, #ffd1dc 100%);
+}
+
+/* ===== ESTILOS DE TEXTO Y ELEMENTOS (Ajustados a los fondos) ===== */
+
+/* Flores (Marcos superior e inferior) */
+.flowers-top,
+.flowers-bottom {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  z-index: 0; /* Detrás del contenido pero sobre el fondo */
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}
+.flowers-top {
+  top: 0;
+}
+.flowers-bottom {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+/* Banner */
+.banner-section {
+  padding: 0;
+}
+.banner-container {
+  width: 100%;
+  max-width: 90vw;
+  z-index: 1;
+}
+.banner-frame {
+  background: linear-gradient(135deg, #b30000, #660000);
+  border: 3px solid var(--dorado);
+  border-radius: 10px;
+  padding: clamp(20px, 8vw, 40px) clamp(10px, 5vw, 20px);
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+}
+
+/* Corona y Nombre */
+.crown-display {
+  font-size: clamp(3rem, 15vw, 5rem);
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 15px var(--dorado));
+  z-index: 1;
+}
+.main-name {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.8rem, 14vw, 5rem);
+  color: var(--rojo-oscuro); /* Texto oscuro para fondo rosa */
+  text-shadow:
+    2px 2px 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.5);
+  line-height: 1.1;
+  z-index: 1;
+}
+.main-name-sub {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  color: var(--dorado); /* Dorado para fondo rosa */
+  letter-spacing: 4px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Princesa (Posicionada al fondo de la sección) */
+.princess-cutout {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95vw;
+  max-width: 450px;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.5));
+}
+
+/* Textos de Dedicatoria, Padres y Padrinos */
+.dedication-text {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1rem, 4.5vw, 1.3rem);
+  color: var(--rojo-oscuro);
+  line-height: 1.8;
+  max-width: 90vw;
+  font-style: italic;
+  margin-top: 25vh; /* <--- NUEVO: Empuja el texto hacia abajo, lejos de las flores */
+  margin-bottom: 35vh; /* <--- MODIFICADO: Reducimos el espacio de abajo */
+  position: relative;
+  z-index: 2;
+  text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+}
+
+.crown-small {
+  font-size: clamp(2rem, 10vw, 3rem);
+  margin-bottom: 10px;
+  z-index: 2;
+  position: relative;
+  filter: drop-shadow(0 0 10px var(--dorado));
+}
+
+.section-subtitle {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.2rem, 6vw, 1.8rem);
+  color: var(--rojo-oscuro);
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+.parents-names,
+.godparents-names {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 10vw, 3rem);
+  color: var(--dorado); /* Dorado brilla sobre rojo */
+  line-height: 1.5;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 65vh; /* Espacio para la princesa */
+  position: relative;
+  z-index: 2;
+}
+
+/* Sección Mariposas */
+.butterfly-section {
+  overflow: hidden;
+}
+.bfly {
+  position: absolute;
+  width: 15vw;
+  max-width: 80px;
+  z-index: 1;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+.bfly-1 {
+  bottom: -50px;
+  left: -50px;
+  animation: flyDiagonal 5s linear infinite;
+}
+.bfly-2 {
+  bottom: -50px;
+  left: 30%;
+  animation: flyDiagonal 6s linear infinite 1s;
+}
+.bfly-3 {
+  bottom: -50px;
+  left: 60%;
+  animation: flyDiagonal 7s linear infinite 2s;
+}
+@keyframes flyDiagonal {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, -100vh) rotate(45deg) scale(1.5);
+    opacity: 0;
+  }
+}
+.butterfly-text {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 12vw, 4rem);
+  color: var(--dorado); /* Texto dorado para fondo rojo */
+  margin-top: 50px;
+  z-index: 2;
+  text-shadow:
+    0 0 20px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Sección Detalles */
+.details-title {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.1rem, 5vw, 1.5rem);
+  color: var(--dorado-claro); /* Texto claro para fondo oscuro */
+  line-height: 1.6;
+  margin-bottom: 25px;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+  position: relative;
+  z-index: 2;
+}
+.event-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+}
+.event-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.event-day,
+.event-month,
+.event-time,
+.event-place {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  color: var(--rosa-claro); /* Texto rosa claro para fondo oscuro */
+}
+.event-date {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.5rem, 12vw, 4rem);
+  color: var(--dorado); /* Número gigante dorado */
+  line-height: 1;
+  margin: 5px 0;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+}
+.event-label {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(0.7rem, 3vw, 0.9rem);
+  color: var(--rosa); /* Texto rosa */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.btn-mapa {
+  display: inline-block;
+  padding: 15px 30px;
+  background: var(--dorado);
+  color: var(--rojo-oscuro);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 3.5vw, 1rem);
+  letter-spacing: 1px;
+  transition: 0.3s;
+  z-index: 2;
+  box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+  position: relative;
+  border: 2px solid var(--dorado-claro);
+}
+.btn-mapa:hover {
+  background: var(--dorado-claro);
+  transform: scale(1.05);
+}
+
+/* RSVP (Fondo Rosa) */
+.rsvp-text {
+  font-family: "Lato", sans-serif;
+  color: var(--rojo-oscuro);
+  font-size: clamp(0.9rem, 4vw, 1.1rem);
+  margin-bottom: 20px;
+  max-width: 90vw;
+  position: relative;
+  z-index: 1;
+  font-weight: bold;
+}
+.rsvp-form {
+  width: 100%;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+}
+.rsvp-form input,
+.rsvp-form select {
+  padding: 15px 20px;
+  border: 2px solid var(--dorado);
+  border-radius: 50px;
+  font-family: "Lato", sans-serif;
+  font-size: clamp(0.9rem, 4vw, 1rem);
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--rojo-oscuro);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.btn-enviar {
+  padding: 15px;
+  background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
+  color: var(--dorado-claro);
+  border: 2px solid var(--dorado);
+  border-radius: 50px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(179, 0, 0, 0.3);
+}
+.btn-enviar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(179, 0, 0, 0.5);
+}
+
+/* Final (Te Esperamos) */
+.final-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3rem, 15vw, 5rem);
+  color: var(--dorado);
+  text-shadow:
+    0 0 30px rgba(212, 175, 55, 1),
+    0 0 10px rgba(0, 0, 0, 0.8);
+  margin: 15px 0;
+  margin-bottom: 65vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== BOTÓN MÚSICA ===== */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
+  border: 2px solid var(--dorado);
+  color: var(--dorado-claro);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+.music-btn:hover {
+  transform: scale(1.1);
+}
+.music-btn.playing #musicIcon {
+  animation: spin 3s linear infinite;
+  display: inline-block;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.music-btn.hidden {
+  display: none;
+}
+/* ===== SECCIÓN PORTADA (ESTILO IMAGEN 1) ===== */
+.banner-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15vh;
+  padding-bottom: 15vh;
+  overflow: hidden;
+}
+
+.banner-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Contenedor del marco ovalado y la corona */
+.crown-frame {
+  position: relative;
+  width: 85vw;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.aro-img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6)); /* Brillo dorado */
+}
+
+/* Texto dentro del marco ovalado */
+.frame-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.title-15 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3rem, 14vw, 5rem);
+  color: #d4af37; /* Dorado */
+  line-height: 1;
+  margin: 0;
+  text-shadow:
+    2px 2px 5px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+.title-years {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 12vw, 4rem);
+  color: #d4af37;
+  line-height: 1;
+  margin-top: -10px;
+  text-shadow:
+    2px 2px 5px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+/* Nombre de la quinceañera (debajo del marco) */
+.banner-name {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  color: #b30000; /* Rojo intenso */
+  margin-top: 10px;
+  z-index: 2;
+  text-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.9),
+    0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Imagen de la princesa en la parte inferior */
+.princess-banner {
+  position: absolute;
+  bottom: -30px; /* Ajusta esto si la princesa queda muy arriba o muy abajo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95vw;
+  max-width: 450px;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
+}
+.bfly {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  width: 40px; /* Base size */
+  height: auto;
+}
+
+@keyframes crazyFly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(100px, -200px) rotate(45deg);
+  }
+  50% {
+    transform: translate(-150px, -400px) rotate(-30deg);
+  }
+  75% {
+    transform: translate(200px, -100px) rotate(90deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+@keyframes vuelo-1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(30vw, -20vh) rotate(120deg) scale(1.2);
+  }
+  66% {
+    transform: translate(-10vw, -50vh) rotate(-90deg) scale(0.8);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes vuelo-2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-40vw, 30vh) rotate(-180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes vuelo-3 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(50vw, 50vh) rotate(90deg);
+  }
+  75% {
+    transform: translate(-20vw, -20vh) rotate(-180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes vuelo-4 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(20vw, -60vh) rotate(360deg) scale(1.5);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+/* ===== ANIMACIONES MÁGICAS ===== */
+
+/* 1. Animación de Flotación (Sube y Baja) */
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* 2. Animación de Brillo Dorado (Pulsa la luz) */
+@keyframes brillar {
+  0%,
+  100% {
+    text-shadow:
+      2px 2px 5px rgba(0, 0, 0, 0.3),
+      0 0 10px rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    text-shadow:
+      2px 2px 5px rgba(0, 0, 0, 0.5),
+      0 0 25px rgba(212, 175, 55, 1),
+      0 0 40px rgba(212, 175, 55, 0.8);
+  }
+}
+
+/* 3. Animación de Aparición (Fade In + Scale) */
+@keyframes aparecerMagico {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ===== ANIMACIÓN DE INTRO (SOLO UNA VEZ) ===== */
+
+/* 1. Definimos cómo será la aparición mágica */
+@keyframes introAparecer {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(40px); /* Empieza pequeño y más abajo */
+    filter: blur(8px); /* Empieza borroso */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0); /* Termina en su tamaño y lugar normal */
+    filter: blur(0); /* Termina nítido */
+  }
+}
+
+/* 2. Aplicamos la animación a "Mis 15 Años" */
+.title-15,
+.title-years {
+  animation: introAparecer 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 3. Aplicamos la animación al nombre de la Quinceañera (con un pequeño retraso) */
+.banner-name {
+  animation: introAparecer 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s forwards;
+  /* El 0.8s significa que el nombre aparecerá casi un segundo después del "Mis 15 Años" */
+}
+.princess-banner {
+  position: absolute;
+  bottom: -180px; /* <--- ESTE ES EL VALOR QUE HAY QUE CAMBIAR */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95vw;
+  max-width: 450px;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
+}
+/* ===== CONTENEDOR DE PÉTALOS (cubre TODA la pantalla) ===== */
+#contenedor-petalos {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* Mejor soporte en móvil */
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 998;
+}
+
+/* ===== LOS PÉTALOS ===== */
+.petalo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    opacity: 0;
+    /* El pétalo empieza EXACTAMENTE en el centro del viewport */
+    transform: translate(50vw, 50vh);
+    will-change: transform, opacity;
+    pointer-events: none;
+    filter: drop-shadow(0 0 5px rgba(179, 0, 0, 0.5));
+}

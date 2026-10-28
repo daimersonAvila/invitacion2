@@ -1,0 +1,260 @@
+    /* ================================================================
+       KEIDY.CSS - Sección "Keidy Julieth"
+       - El nombre aparece ENTRE la corona y la cabeza de la princesa
+       - Pétalos explotan desde el centro
+       ================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#pageFlip {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    will-change: opacity;
+}
+
+/* ================================================================
+   SECCIÓN PRINCIPAL
+   ================================================================ */
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Fondo rosa mágico */
+.bg-light-pink {
+    /* ✅ Cambia "tu-imagen.jpg" por el nombre real de tu archivo */
+    background-image: url('../../assets/img/fondo2.jpg');
+
+    /* Asegura que la imagen cubra toda la pantalla sin deformarse */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Opcional: hace que el fondo no scrollee */
+}
+
+/* ================================================================
+   PÉTALOS - Fondo (van detrás de todo)
+   ================================================================ */
+#contenedor-petalos {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.petalo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: auto;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(179, 0, 0, 0.5));
+    will-change: transform, opacity;
+}
+
+/* ================================================================
+   DISPLAY DE LA CORONA + PRINCESA
+   ================================================================ */
+.crown-display {
+    position: relative;
+    width: 78vw;
+    max-width: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+
+    /* Animación de entrada suave */
+    animation: prinAparecer 1.6s cubic-bezier(0.2, 0.9, 0.3, 1.1) 0.2s both;
+}
+
+@keyframes prinAparecer {
+    0% {
+        opacity: 0;
+        transform: scale(0.6) translateY(30px);
+        filter: blur(10px);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.04) translateY(-5px);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* La imagen de la corona + princesa */
+.crown-display > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.35));
+}
+
+/* ================================================================
+   NOMBRE "KEIDY JULIETH" - Posicionado ABSOLUTAMENTE entre la
+   corona (arriba) y la cabeza de la princesa (abajo)
+   ================================================================ */
+.main-name {
+    position: absolute;
+    /* ✅ Colocación exacta: en el hueco entre corona y cabeza */
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(2.6rem, 13vw, 4.5rem);
+    line-height: 1;
+    color: #7a0e0e; /* Rojo vino intenso */
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+
+    /* Sombra suave + brillo dorado sutil */
+    text-shadow:
+            0 2px 4px rgba(255, 255, 255, 0.6),
+            0 0 15px rgba(212, 175, 55, 0.5),
+            0 4px 10px rgba(74, 0, 0, 0.25);
+
+    /* Animación de entrada */
+    animation: nombreEntrar 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.2) 1.2s both;
+}
+
+@keyframes nombreEntrar {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.4);
+        filter: blur(8px);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* ================================================================
+   SUBTÍTULO "AVILA RODRIGUEZ" - Justo debajo del nombre
+   ================================================================ */
+.main-name-sub {
+    position: absolute;
+    /* ✅ Debaixo del nombre */
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.75rem, 3.5vw, 1rem);
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: #d4af37; /* Dorado */
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+
+    text-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.5),
+            0 0 10px rgba(212, 175, 55, 0.7);
+
+    animation: subtituloEntrar 1s ease-out 1.7s both;
+}
+
+@keyframes subtituloEntrar {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+}
+
+/* ================================================================
+   RESPONSIVE - Ajustes finos según altura de pantalla
+   ================================================================ */
+
+/* Pantallas pequeñas (iPhone SE) */
+@media (max-height: 700px) {
+    .crown-display {
+        width: 70vw;
+        max-width: 320px;
+    }
+    .main-name {
+        top: 40%;
+        font-size: clamp(2.2rem, 11vw, 3.5rem);
+    }
+    .main-name-sub {
+        top: 54%;
+    }
+}
+
+/* Pantallas grandes (Pro Max, tablets) */
+@media (min-height: 900px) {
+    .crown-display {
+        width: 85vw;
+        max-width: 440px;
+    }
+    .main-name {
+        top: 44%;
+        font-size: clamp(3rem, 14vw, 5rem);
+    }
+    .main-name-sub {
+        top: 58%;
+    }
+}
+
+/* Modo horizontal (landscape) */
+@media (orientation: landscape) {
+    .crown-display {
+        width: 45vh;
+        max-width: 320px;
+    }
+    .main-name {
+        top: 45%;
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    .main-name-sub {
+        top: 60%;
+        letter-spacing: 4px;
+    }
+}
