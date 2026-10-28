@@ -4,13 +4,12 @@
 const CONFIG = {
   // Pega aquí el enlace de YouTube de "Tiempo de Vals" (o solo el ID del video)
   musica: "https://www.youtube.com/watch?v=HF-_IqvEMgo&list=RDHF-_IqvEMgo&start_radio=1",
-  inicio: 5, // segundo donde empieza la canciónn
+  inicio: 5, // segundo donde empieza la canción
   volumen: 40,
   fecha: "2026-11-29T14:00:00-05:00",
   whatsapp: "573142739961",
   mapa: "https://www.google.com/maps/search/Capilla+Vereda+Chen",
   auto: true, // recorrido automático
-  // Tiempo de lectura (ms): base + por palabra + por foto. Súbelos si quieren más calma.
   lectura: { base: 3000, porPalabra: 500, porFoto: 1500, max: 24000 },
   mensajes: [
     "Tu presencia hará que este día sea inolvidable",
@@ -52,7 +51,7 @@ $("abrir").addEventListener("click", () => {
   if (!quieto) { setTimeout(rafaga, 700); if (CONFIG.auto) setTimeout(() => recorrer(0), 3200); }
 });
 
-/* ---------- Enlaces ---------- */
+/* ---------- Enlace del mapa ---------- */
 $("mapa").href = CONFIG.mapa;
 
 /* ---------- Cuenta regresiva ---------- */
@@ -85,7 +84,7 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".rev").forEach((el) => io.observe(el));
 
-/* ---------- Pétalos cayendo ---------- */
+/* ---------- Pétalos cayendo (permanentes) ---------- */
 (function () {
   const fotos = ["pe1", "pe2", "petBla"];
   for (let i = 0; i < 14; i++) {
@@ -106,8 +105,7 @@ document.querySelectorAll(".rev").forEach((el) => io.observe(el));
   }, 4000);
 })();
 
-
-/* ---------- Pétalos: una lluvia al llegar a cada sección ---------- */
+/* ---------- Ráfaga de pétalos al llegar a sección ---------- */
 function rafaga(n = 12) {
   const fotos = ["pe1", "pe2", "petBla"];
   for (let i = 0; i < n; i++) {
@@ -119,7 +117,7 @@ function rafaga(n = 12) {
   }
 }
 
-/* ---------- Mariposas: unas cruzan volando, otras forman un corazón ---------- */
+/* ---------- Mariposas: cruzan volando y forman corazón ---------- */
 const nuevaMari = () => { const m = document.createElement("img"); m.src = "assets/img/mar1.png"; m.alt = ""; m.className = "mari"; $("mariposas").appendChild(m); return m; };
 function volar() {
   const w = innerWidth, h = innerHeight, izq = Math.random() < 0.5, n = 5, m = nuevaMari(), kf = [];
@@ -144,7 +142,7 @@ function corazon() {
 }
 if (!quieto) setInterval(() => { if (!document.hidden && !document.body.classList.contains("bloqueado")) volar(); }, 3800);
 
-/* ---------- Al llegar a cada sección: pétalos (y corazón en algunas) ---------- */
+/* ---------- Al llegar a cada sección: pétalos y corazón ---------- */
 const secs = [...document.querySelectorAll("main>section")];
 const vistas = new IntersectionObserver((es) => es.forEach((e) => {
   if (e.isIntersecting && !document.body.classList.contains("bloqueado")) {
@@ -154,7 +152,38 @@ const vistas = new IntersectionObserver((es) => es.forEach((e) => {
 }), { threshold: 0.3 });
 secs.forEach((s) => vistas.observe(s));
 
-/* ---------- Recorrido automático (se pausa al tocar la pantalla) ---------- */
+/* ---------- Galería / Lightbox ---------- */
+(function () {
+  const galeria  = document.getElementById("galeria");
+  const visor    = document.getElementById("visor");
+  const visorImg = document.getElementById("visor-img");
+  if (!galeria || !visor || !visorImg) return;
+
+  galeria.addEventListener("click", (e) => {
+    const fig = e.target.closest("figure");
+    if (!fig) return;
+    const img = fig.querySelector("img");
+    visorImg.src = img.src;
+    visor.hidden = false;
+    document.body.style.overflow = "hidden";
+  });
+
+  visor.addEventListener("click", () => {
+    visor.hidden = true;
+    visorImg.src = "";
+    document.body.style.overflow = "";
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !visor.hidden) {
+      visor.hidden = true;
+      visorImg.src = "";
+      document.body.style.overflow = "";
+    }
+  });
+})();
+
+/* ---------- Recorrido automático ---------- */
 let auto = false, tok = 0;
 const btnAuto = $("autoBtn");
 const ui = () => (btnAuto.firstElementChild.textContent = auto ? "❚❚" : "▶");

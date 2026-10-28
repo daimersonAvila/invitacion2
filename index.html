@@ -6,18 +6,18 @@
   <title>Mis XV Años · Keidy Julieth</title>
   <meta name="description" content="Te invitamos a celebrar los 15 años de Keidy Julieth. Domingo 29 de noviembre de 2026." />
   <meta name="theme-color" content="#4a0000" />
-  <!-- Vista previa al compartir por WhatsApp (si cambia el dominio, actualiza las 2 URLs de abajo) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="es_CO" />
-  <meta property="og:site_name" content="Mis XV Años" />
-  <meta property="og:title" content="Mis XV Años · Keidy Julieth" />
-  <meta property="og:description" content="Te invitamos a celebrar mis 15 años. Domingo 29 de noviembre de 2026. ¡Abre tu invitación!" />
-  <meta property="og:url" content="https://invitacion2-ashen.vercel.app/" />
-  <meta property="og:image" content="https://invitacion2-ashen.vercel.app/assets/og.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
+  <meta property="og:type"         content="website" />
+  <meta property="og:locale"       content="es_CO" />
+  <meta property="og:site_name"    content="Mis XV Años" />
+  <meta property="og:title"        content="Mis XV Años · Keidy Julieth" />
+  <meta property="og:description"  content="Te invitamos a celebrar mis 15 años. Domingo 29 de noviembre de 2026. ¡Abre tu invitación!" />
+  <meta property="og:url"          content="https://invitacion2-ashen.vercel.app/" />
+  <meta property="og:image"        content="https://invitacion2-ashen.vercel.app/assets/og.jpg" />
+  <meta property="og:image:type"   content="image/jpeg" />
+  <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card"        content="summary_large_image" />
+
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/invitacion.css" />
 </head>
@@ -25,8 +25,9 @@
 
 <!-- Música (YouTube oculto). El enlace se cambia en assets/invitacion.js -->
 <div id="musica"><iframe id="yt" title="Música" allow="autoplay; encrypted-media" tabindex="-1"></iframe></div>
+
 <button id="musicBtn" aria-label="Música"><span>♪</span></button>
-<div id="petalos" aria-hidden="true"></div>
+<div id="petalos"   aria-hidden="true"></div>
 <div id="mariposas" aria-hidden="true"></div>
 <button id="autoBtn" aria-label="Pausar o reanudar el recorrido automático"><span>❚❚</span></button>
 
@@ -39,16 +40,20 @@
 </div>
 
 <main>
+
   <!-- 1. Hero -->
   <section class="sec hero">
     <img class="flores" src="assets/img/flores1.png" alt="" />
     <img class="bfly b1" src="assets/img/mar1.png" alt="" />
     <img class="bfly b2" src="assets/img/mar1.png" alt="" />
     <img class="bfly b3" src="assets/img/mar1.png" alt="" />
-    <div class="aro"><img src="assets/img/aro.png" alt="" /><h1>Mis 15<br />Años</h1></div>
+    <div class="aro">
+      <img src="assets/img/aro.png" alt="" />
+      <h1>Mis 15<br />Años</h1>
+    </div>
     <p class="nombre">Keidy Julieth</p>
     <p class="apellido">Avila Rodriguez</p>
-    <img class="princesa" src="assets/img/princesa1.png" alt="" />
+    <img class="princesa" src="assets/img/princesa1.png" alt="Keidy Julieth" />
   </section>
 
   <!-- 2. Mensaje con el castillo -->
@@ -61,8 +66,12 @@
     </div>
   </section>
 
-  <!-- 3. Foto -->
-  <section class="band"><figure class="foto rev"><img src="assets/fotos/foto1.jpg" alt="Princesa" loading="lazy" /></figure></section>
+  <!-- 3. Foto 1 -->
+  <section class="band">
+    <figure class="foto rev">
+      <img src="assets/fotos/foto1.jpg" alt="Keidy Julieth" loading="lazy" />
+    </figure>
+  </section>
 
   <!-- 4. Padres -->
   <section class="sec">
@@ -98,16 +107,43 @@
     <div class="calendario rev" id="calendario" aria-label="Calendario de noviembre 2026"></div>
   </section>
 
-  <!-- 6. Foto -->
-  <section class="band"><figure class="foto rev"><img src="assets/fotos/foto2.jpg" alt="Princesa" loading="lazy" /></figure></section>
+  <!-- 6. Foto 2 -->
+  <section class="band">
+    <figure class="foto rev">
+      <img src="assets/fotos/foto2.jpg" alt="Keidy Julieth" loading="lazy" />
+    </figure>
+  </section>
 
-  <!-- 7. Lugares -->
+  <!-- 7. Galería -->
+  <section class="sec galeria">
+    <img class="corona rev" src="assets/img/corona1.png" alt="" />
+    <h2 class="rev">Momentos</h2>
+    <div class="rejilla" id="galeria">
+      <figure class="rev">
+        <img src="assets/fotos/foto3.jpg" alt="Keidy Julieth" loading="lazy" />
+      </figure>
+      <figure class="rev">
+        <img src="assets/fotos/foto4.jpg" alt="Keidy Julieth" loading="lazy" />
+      </figure>
+      <figure class="rev">
+        <img src="assets/fotos/foto5.jpg" alt="Keidy Julieth" loading="lazy" />
+      </figure>
+      <figure class="rev">
+        <img src="assets/fotos/foto6.jpg" alt="Keidy Julieth" loading="lazy" />
+      </figure>
+    </div>
+    <!-- Lightbox -->
+    <div id="visor" hidden>
+      <img id="visor-img" src="" alt="" />
+    </div>
+  </section>
+
+  <!-- 8. Lugares -->
   <section class="sec">
     <div class="marco rev">
       <h2>Ceremonia religiosa</h2>
       <p class="lugar">Capilla Vereda Chen</p>
       <h2>4:00 pm</h2>
-
       <span class="filete"></span>
       <h2>Recepción y celebración</h2>
       <p class="lugar">Residencia Familia Avila Rodríguez</p>
@@ -115,8 +151,7 @@
     </div>
   </section>
 
-
-  <!-- 9. Confirmación y cierre -->
+  <!-- 9. Cierre con fuegos -->
   <section class="sec cierre" data-corazon>
     <canvas id="fuegos" aria-hidden="true"></canvas>
     <img class="corona rev" src="assets/img/corona.png" alt="" />
@@ -124,6 +159,7 @@
     <h2 class="titulo final rev">¡Te esperamos!</h2>
     <img class="rosa rev" src="assets/img/rosa1.png" alt="" />
   </section>
+
 </main>
 
 <script src="assets/invitacion.js"></script>
