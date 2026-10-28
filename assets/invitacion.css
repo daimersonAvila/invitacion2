@@ -50,17 +50,7 @@ h2{font-family:Cinzel,serif;font-weight:400;font-size:clamp(1rem,4.6vw,1.25rem);
 .foto{width:100%;padding:8px;background:linear-gradient(135deg,var(--oro2),var(--oro),#8a6a12);box-shadow:0 14px 40px rgba(0,0,0,.6)}
 .foto img{width:100%;aspect-ratio:4/5;object-fit:cover}
 
-/* ── Galería (rejilla 2 columnas) ── */
-.rejilla{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
-.rejilla figure{padding:5px;background:var(--oro);cursor:zoom-in;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
-.rejilla figure:hover{transform:scale(1.03);box-shadow:0 10px 30px rgba(0,0,0,.6)}
-.rejilla img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s ease}
-.rejilla figure:hover img{transform:scale(1.06)}
 
-/* ── Lightbox ── */
-#visor{position:fixed;inset:0;z-index:9990;background:rgba(10,0,0,.95);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
-#visor[hidden]{display:none}
-#visor img{max-height:92dvh;border:3px solid var(--oro);box-shadow:0 0 40px rgba(212,175,55,.3)}
 
 /* ── Fecha ── */
 .invita{line-height:1.8}

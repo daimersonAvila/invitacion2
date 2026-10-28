@@ -152,36 +152,7 @@ const vistas = new IntersectionObserver((es) => es.forEach((e) => {
 }), { threshold: 0.3 });
 secs.forEach((s) => vistas.observe(s));
 
-/* ---------- Galería / Lightbox ---------- */
-(function () {
-  const galeria  = document.getElementById("galeria");
-  const visor    = document.getElementById("visor");
-  const visorImg = document.getElementById("visor-img");
-  if (!galeria || !visor || !visorImg) return;
 
-  galeria.addEventListener("click", (e) => {
-    const fig = e.target.closest("figure");
-    if (!fig) return;
-    const img = fig.querySelector("img");
-    visorImg.src = img.src;
-    visor.hidden = false;
-    document.body.style.overflow = "hidden";
-  });
-
-  visor.addEventListener("click", () => {
-    visor.hidden = true;
-    visorImg.src = "";
-    document.body.style.overflow = "";
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !visor.hidden) {
-      visor.hidden = true;
-      visorImg.src = "";
-      document.body.style.overflow = "";
-    }
-  });
-})();
 
 /* ---------- Recorrido automático ---------- */
 let auto = false, tok = 0;
